@@ -1,0 +1,27 @@
+<body>
+<div id="content"></div>
+<script type="text/javascript">
+var student = {};
+student.name = "Salaheddine Al-Ayoubi";
+student .age = "20" ;
+
+document.writeln(student.name + '<br>');
+
+function Student(name, age)
+{
+    this.name = name;
+    this.age = age;
+    this.saySalam = function () {
+        document.writeln("Salamou Aleikoum! I am " + this.name + ". I am " + this.age + " years old. <br>");
+    }
+}
+ 
+var juha = new Student("Juha Nasreddin", 22);
+var abbas = new Student("Abbas Ibn Firnas", 25);
+var samir = new Student("Samir Saghir", 17);
+
+juha.saySalam();
+abbas.saySalam();
+samir.saySalam();
+</script>
+</body>

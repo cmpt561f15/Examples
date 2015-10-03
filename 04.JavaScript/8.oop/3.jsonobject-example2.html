@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Object - Example2</title>
+</head>
+<body>
+	<div id="content">
+	</div>
+
+	<script>
+
+		function displayStudent(student) {
+                        var contentDiv = document.getElementById("content");
+                        contentDiv.innerHTML = student.name;
+                        contentDiv.innerHTML += '<br>';
+                        
+			for (var i in courses) {
+				contentDiv.innerHTML += (courses[i].course + " : " + courses[i].grade);
+                                contentDiv.innerHTML += '<br>';
+			}
+		}
+
+		var courses = [
+			{ course: 'CMPS151', grade: 'A' },
+			{ course: 'CMPS152', grade: 'B' },
+			{ course: 'CMPS251', grade: 'B+' },
+			{ course: 'CMPS356', grade: 'A' }];
+
+		var student = { name: "Salaheddine", courses: courses };
+                
+		displayStudent(student);
+		courses[2].grade = 'B+';
+		displayStudent(student);
+
+	</script>
+</body>
+</html>

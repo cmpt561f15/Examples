@@ -1,0 +1,30 @@
+<script type="text/javascript">
+
+    function Person() {
+        this.name = arguments[0];
+        this.saySalam = function () {
+            document.writeln("Salam! I am " + this.name + '.');
+            document.writeln('<br>');
+        }
+    }
+
+    Student.prototype = new Person;
+
+    function Student(name, gpa) {
+        this.name = name;       
+        this.gpa = gpa;
+    }
+	
+    Student.prototype.sayNameAndGrade = function() {
+            document.writeln("Salam! I am " + this.name + '. ' +
+                    'My gpa is ' + this.gpa + '.' );
+            document.writeln('<br>');
+      }
+
+    var person = new Person("Juha");
+    person.saySalam();
+
+    var student = new Student("Samir", 3.5);
+    student.saySalam();
+    student.sayNameAndGrade();
+</script>

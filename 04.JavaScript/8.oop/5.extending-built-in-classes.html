@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    Array.prototype.getMax = 
+     function () {
+      var max = this[0];
+        for (var i = 1; i < this.length; i++) {
+          if (max < this[i]) {
+            max = this[i];
+          }
+      }
+      return max;
+}
+
+var array = [9, 1, 11, 3, 4];
+var max = array.getMax();
+document.writeln('['+array.join(', ') + ']<br> The max value is:');
+document.writeln(max);
+document.writeln('<br>');
+</script>

@@ -1,0 +1,17 @@
+<body>
+<script type="text/javascript">
+    function Circle(radius) {
+        this.radius = radius;
+        this.pi = 3.14159;
+    }
+
+    Circle.prototype.calculateArea =function () {
+        return this.pi * this.radius * 2
+    }
+
+    var circle =new Circle(5);
+    var area = circle.calculateArea();
+    document.writeln('Circle area is : ' + area);
+
+</script>
+</body>

@@ -1,0 +1,52 @@
+<script type='text/javascript'>
+    function writeLn(text) {
+            document.writeln(text);
+            document.writeln('<br>');
+    }
+    
+    function Person(name) {
+        this.name = name;
+        this.saySalam = function () {
+            return 'Salam! I am ' + this.name;
+        }
+    }
+
+    Student.prototype = new Person();
+    Teacher.prototype = new Person();
+
+    function Student(name, gpa) {
+        this.name = name;       
+        this.gpa = gpa;
+    }
+	
+    Student.prototype.saySalam = function() {
+            return 'Salam! I am ' + this.name + '. ' +
+                    'My gpa is ' + this.gpa ;
+    }
+      
+    function Teacher(name, area) {
+        this.name = name;
+        this.area = area;
+        this.saySalam = function() {
+            return 'Salam! I am ' + this.name + '. ' +
+                    'My area is ' + this.area;
+        };
+    }
+
+    var ali = new Teacher('Ali', 'Usul Al-fiqh');
+    ali.saySalam = function() {
+            return 'Salamou Aleikoum Wa Rahmatu Allah Wa Barakatuhu! Akhokum Fi Lah ' + this.name + '. ' +
+                    'Mudaris ' + this.area;
+    };
+
+    var people = [
+		new Teacher('Joha', 'Math'), 
+                new Student('Samir', 3.5),
+		new Person('Salaheddine'), 
+                new Teacher('Moza', 'Literature'), 
+                ali];
+    
+   for(var index in people) {
+        writeLn(people[index].saySalam());
+    }
+</script>
