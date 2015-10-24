@@ -2,11 +2,8 @@
 <html>
 <head>
 	<title>JS Arrays - sorting arrays</title>
-	<link href="styles/js-console.css" rel="stylesheet" />
 </head>
 <body>
-	<div id="js-console"></div>
-	<script src="scripts/js-console.js"></script>
 	<script>
 		function orderBy(a, b) {
 			//return (a == b) ? 0 : (a > b) ? 1 : -1;	 
@@ -15,10 +12,10 @@
 		var numbers = [5, 4, 23, 2];
 
 		numbers.sort();
-		jsConsole.writeLine(numbers.join(", "));
+		console.log(numbers.join(", "));
 
 		numbers.sort(orderBy);
-		jsConsole.writeLine(numbers.join(", "));
+		console.log(numbers.join(", "));
 		//returns 2, 4, 5, 23 
 
 
