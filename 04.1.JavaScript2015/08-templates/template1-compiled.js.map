@@ -1,0 +1,1 @@
+{"version":3,"sources":["template1.js"],"names":[],"mappings":";;AAAA,IAAI,GAAG,iBAAiB,CAAC;AACzB,OAAO,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC","file":"template1-compiled.js","sourcesContent":["var str = `Hello World!`;\r\nconsole.log(str);"]}

@@ -1,7 +1,7 @@
 var speaker = {
-    firstName: "Christophe",
-    lastName: "Coenraets",
-    twitterId: "@ccoenraets"
+    firstName : "Samir",
+    lastName : "Saghir",
+    twitterId : "@samir"
 };
 
 // Create Variables from Object

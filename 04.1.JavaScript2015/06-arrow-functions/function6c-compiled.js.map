@@ -1,0 +1,1 @@
+{"version":3,"sources":["function6c.js"],"names":[],"mappings":";;AAAA,IAAI,QAAQ,GAAG,SAAX,QAAQ,CAAG,IAAI;SAAK,QAAQ,GAAG,IAAI;CAAA,CAAC;;AAExC,OAAO,CAAC,GAAG,CAAC,QAAQ,CAAC,OAAO,CAAC,CAAC,CAAC","file":"function6c-compiled.js","sourcesContent":["var greeting = name  => 'Hello ' + name;\r\n\r\nconsole.log(greeting(\"Samir\"));"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["template3.js"],"names":[],"mappings":";;AAAA,IAAI,IAAI,GAAG;;;KAGN,CAAC;;AAEN,OAAO,CAAC,GAAG,aAAW,IAAI,OAAI,CAAC","file":"template3-compiled.js","sourcesContent":["var name = \"Samir \\\r\n\\\r\n\\\r\nTest\";\r\n\r\nconsole.log(`Hello, ${name}!`);"]}

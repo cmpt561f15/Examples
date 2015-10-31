@@ -1,0 +1,1 @@
+{"version":3,"sources":["template4.js"],"names":[],"mappings":";;AAAA,IAAI,QAAQ,GAAG,GAAG,CAAC;AACnB,IAAI,YAAY,GAAG,IAAI,CAAC;AACxB,OAAO,CAAC,GAAG,mBAAiB,QAAQ,GAAG,YAAY,CAAG,CAAC","file":"template4-compiled.js","sourcesContent":["var priceUSD = 100;\r\nvar exchangeRate = 3.65;\r\nconsole.log(`Price in QR: ${priceUSD * exchangeRate}`);\r\n"]}

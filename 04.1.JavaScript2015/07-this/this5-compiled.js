@@ -3,9 +3,13 @@
 var obj = {
 
     init: function init() {
+        var _this = this;
+
+        //var self = this;
+        console.log("waiting 2 seconds");
         setTimeout(function () {
-            this.doSomething();
-        }, 1000);
+            return _this.doSomething();
+        }, 2000);
     },
 
     doSomething: function doSomething() {

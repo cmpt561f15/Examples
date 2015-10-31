@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="..//jquery-1.9.1.min.js"></script>
+  <style type="text/css">
+    #left-aside{
+      width:500px;
+      text-align:justify;
+    }
+  </style>
+</head>
+<body>
+<ul id="people-list">
+
+</ul>
+
+  <script type="text/javascript">
+
+ function onLoadSuccess(people){
+    var peopleHTML ="";
+    for(var i = 0; i < people.length; i+=1){
+      peopleHTML+= 
+                "<li>" + 
+                  "<span>" + 
+                    people[i].firstname + " " + people[i].lastname +
+                  "</span>" +
+                  "<br />" +
+                  "<strong>" +
+                    people[i].nickname + 
+                  "</strong>" +
+                "</li>";
+    }
+    $("#people-list").html(peopleHTML);
+  }
+
+  function onLoadError(err){
+    console.error(err);
+  }
+
+  $.getJSON("data.js").success(onLoadSuccess).error(onLoadError);
+  // $.getJSON("data.js", onLoadSuccess).error(onLoadError);
+  </script>
+</body>
+</html>

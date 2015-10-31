@@ -1,0 +1,1 @@
+{"version":3,"sources":["main1.js"],"names":[],"mappings":";;mBAA6B,OAAO;;AACpC,OAAO,CAAC,GAAG,CAAC,iBAAO,EAAE,CAAC,CAAC,CAAC;AACxB,OAAO,CAAC,GAAG,CAAC,eAAK,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC","file":"main1-compiled.js","sourcesContent":["import { square, diag } from './lib';\r\nconsole.log(square(11)); // 121\r\nconsole.log(diag(4, 3)); // 5"]}

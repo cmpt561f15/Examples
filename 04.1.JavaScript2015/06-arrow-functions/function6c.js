@@ -1,3 +1,3 @@
 var greeting = name  => 'Hello ' + name;
 
-console.log(greeting("Christophe"));
+console.log(greeting("Samir"));

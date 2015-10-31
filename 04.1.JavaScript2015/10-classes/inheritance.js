@@ -1,5 +1,4 @@
 class Shape {
-
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -27,7 +26,7 @@ class Circle extends Shape {
     }
 
     render() {
-        console.log('Rendering circle at %d,%d', this.x, this.y);
+        console.log(`Rendering circle at ${this.x} , ${this.x}`);
     }
 
 }

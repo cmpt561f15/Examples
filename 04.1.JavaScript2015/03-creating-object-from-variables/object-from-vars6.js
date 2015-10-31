@@ -1,6 +1,6 @@
-let firstName = "Christophe";
-let lastName = "Coenraets";
-let twitterId = "@ccoenraets";
+var firstName = "Samir";
+var lastName = "Saghir";
+var twitterId = "@samir";
 
 // Create Object from Variables
 let speaker = {firstName, lastName, twitterId};

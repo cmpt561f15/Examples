@@ -1,9 +1,9 @@
 function divide(x, y) {
-    let result;
+    let returnVal;
     if (y != 0) {
-        result = x / y;
+        returnVal = x / y;
     }
-    return result;
+    return returnVal;
 }
 
 console.log(divide(10, 2));

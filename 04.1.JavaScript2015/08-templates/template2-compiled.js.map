@@ -1,0 +1,1 @@
+{"version":3,"sources":["template2.js"],"names":[],"mappings":";;AAAA,IAAI,SAAS,8CACS,CAAC;;AAEvB,OAAO,CAAC,GAAG,CAAC,SAAS,CAAC,CAAC","file":"template2-compiled.js","sourcesContent":["var multiLine = `This is an example\r\nof a multiline string`;\r\n\r\nconsole.log(multiLine);"]}

@@ -1,9 +1,9 @@
 var speaker = {
-    firstName: "Christophe",
-    lastName: "Coenraets",
-    officePhone: "617-123-4567",
-    mobilePhone: "617-987-6543",
-    homePhone: "617-888-1234"
+    firstName: "Samir",
+    lastName: "Saghir",
+    officePhone: "615-123-4567",
+    mobilePhone: "615-987-6543",
+    homePhone: "615-888-1234"
 };
 
 var {firstName, lastName, ...phoneNumbers} = speaker;

@@ -1,10 +1,13 @@
-function calculateMonthlyPayment(principal, years, rate) {
-    let monthlyRate = rate / 100 / 12;
-    let monthlyPayment = principal * monthlyRate / (1 - (Math.pow(1/(1 + monthlyRate), years * 12)));
-    return {monthlyPayment, monthlyRate};
-};
+function timeLeft(seconds) {
+    var mins = Math.floor(seconds / 60);
+    var secs = seconds % 60;
+    // return two values in array
+    return [mins, secs];
+}
 
-var {monthlyPayment, monthlyRate} = calculateMonthlyPayment(200000, 30, 5);
+//We can use destructing to create variables m and s from the returned array
+let [m,s] = timeLeft(450);
+let sentence = `You've got ${m ? `${m} minutes and ` : ` `}${s} seconds left!`;
 
-console.log(monthlyPayment);
-console.log(monthlyRate);
+console.log(m,s);
+console.log(sentence);
