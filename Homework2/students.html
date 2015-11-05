@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-
+<p class="text-right">Welcome Fn1 Ln1 (<a href="">logout</a>)</p>
 <h1>Students at risk</h1>
 <div>
     <label for="course" class="control-label">Course</label>
@@ -16,11 +16,26 @@
         <option>GENG 108</option>
     </select>
 </div>
+<div>
+    <label for="program" class="control-label">Program</label>
+    <select id="program">
+        <option>All</option>
+        <option>Architecture and Urban Planning </option>
+        <option>Chemical Engineering </option>
+        <option>Civil Engineering </option>
+        <option>Computer Science </option>
+        <option>Computer Engineering </option>
+        <option>Electrical Engineering </option>
+        <option>Mechanical Engineering </option>
+        <option>Industrial and Systems Engineering </option>
+    </select>
+</div>
 <input class="btn btn-primary" type="button" value="Add Followup Action">
 
-<ul style="color:red">
-    <li>Course should only be visible for faculty</li>
-    <li>Course Dropdown only visible for faculty. Default value is All. The list of students should be refreshed upon selecting a course.</li>
+<ul class="bg-danger">
+    <li>Course dropdown should only be visible for faculty while the program dropdown should be visible for advisers. Default value is All.
+        The list of students should be refreshed upon selecting a different value.</li>
+    <li>Course column should only be visible for faculty</li>
     <li>When the add button is clicked, if a student is not selected then dispaly 'Select a student first' message.</li>
     <li>Remove this ul from your final submission</li>
 </ul>
