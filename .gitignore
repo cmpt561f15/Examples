@@ -5,6 +5,7 @@ dist/
 .idea/
 private/
 oldExamples/
+DataGenerator.xlsx
 
 # Windows image file caches
 Thumbs.db

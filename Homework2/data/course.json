@@ -1,0 +1,44 @@
+[
+  {
+    "CRN": 107,
+    "CourseCode": "GENG 107",
+    "CourseName": "Engineering Skills and Ethics",
+    "Semester": "Fall 2015",
+    "InstructorId": 12
+  },
+  {
+    "CRN": 200,
+    "CourseCode": "GENG 200",
+    "CourseName": "Probability and Statistics for Engineers",
+    "Semester": "Fall 2016",
+    "InstructorId": 12
+  },
+  {
+    "CRN": 300,
+    "CourseCode": "GENG 300",
+    "CourseName": "Numerical Methods",
+    "Semester": "Fall 2017",
+    "InstructorId": 33
+  },
+  {
+    "CRN": 360,
+    "CourseCode": "GENG 360",
+    "CourseName": "Engineering Economics",
+    "Semester": "Fall 2018",
+    "InstructorId": 33
+  },
+  {
+    "CRN": 211,
+    "CourseCode": "MATH 211",
+    "CourseName": "Calculus II",
+    "Semester": "Fall 2019",
+    "InstructorId": 21
+  },
+  {
+    "CRN": 127,
+    "CourseCode": "MATH 217",
+    "CourseName": "Mathematics for Engineers",
+    "Semester": "Fall 2020",
+    "InstructorId": 21
+  }
+]

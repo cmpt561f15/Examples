@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students at Risk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+
+<h1>Students at risk</h1>
+<div>
+    <label for="course" class="control-label">Course</label>
+    <select id="course">
+        <option>All</option>
+        <option>GENG 106</option>
+        <option>GENG 107</option>
+        <option>GENG 108</option>
+    </select>
+</div>
+<input class="btn btn-primary" type="button" value="Add Followup Action">
+
+<ul style="color:red">
+    <li>Course should only be visible for faculty</li>
+    <li>Course Dropdown only visible for faculty. Default value is All. The list of students should be refreshed upon selecting a course.</li>
+    <li>When the add button is clicked, if a student is not selected then dispaly 'Select a student first' message.</li>
+    <li>Remove this ul from your final submission</li>
+</ul>
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <tr>
+            <th></th>
+            <th>Student Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Program</th>
+            <th>GPA</th>
+            <th>Risk Category</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkStudent" /></td>
+            <td>123</td>
+            <td>Fn1</td>
+            <td>Ln1</td>
+            <td>M</td>
+            <td>CE</td>
+            <td>2.0</td>
+            <td>Probation 1</td>
+            <td>GENG 106</td>
+            <td><a href="">actions</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkStudent" /></td>
+            <td>234</td>
+            <td>Fn2</td>
+            <td>Ln2</td>
+            <td>M</td>
+            <td>CS</td>
+            <td>1.9</td>
+            <td>Probation 2</td>
+            <td>GENG 107</td>
+            <td><a href="">actions</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkStudent" /></td>
+            <td>456</td>
+            <td>Fn3</td>
+            <td>Ln3</td>
+            <td>F</td>
+            <td>CE</td>
+            <td>2.0</td>
+            <td>Failing a Course Twice</td>
+            <td>GENG 106</td>
+            <td><a href="">actions</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkStudent" /></td>
+            <td>565</td>
+            <td>Fn4</td>
+            <td>Ln4</td>
+            <td>F</td>
+            <td>CS</td>
+            <td>2.1</td>
+            <td>Warning, Last Term GPA < 2.0</td>
+            <td>GENG 107</td>
+            <td><a href="">actions</a></td>
+        </tr>
+    </table>
+    <hr/>
+</div>
+
+</body>
+</html>
