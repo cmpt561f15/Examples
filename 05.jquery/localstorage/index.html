@@ -1,0 +1,17 @@
+<!doctype html>
+<head>
+    <title>HTML5 Local Storage</title>
+</head>
+<body>
+<script>
+    var car = {};
+    car.wheels = 4;
+    car.doors = 2;
+    car.sound = 'vroom';
+    car.name = 'Volvo';
+    console.log(car);
+    localStorage.car2 = JSON.stringify(car);
+    console.log(JSON.parse(localStorage.car2));
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+
+    <div id="target">
+      This content will be replaced as you make successful AJAX requests.
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $( function() {
+            $.ajax({
+              url: 'data/people.json',
+              dataType: 'json',
+              success: function(resp){
+                $('#target').html(resp.people[0].name);
+              },
+              error: function(req, status, err){
+                console.log('something went wrong', status, err);
+              }
+            });
+        });
+    </script>
+</body>
+</html>

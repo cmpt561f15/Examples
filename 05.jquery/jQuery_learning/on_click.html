@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+
+    <ul id="my-unordered-list">This is some HTML that you can use to try out jQuery in the editor on the left. Use your browser's console to see the HTML.
+      <li><i>HTML</i></li>
+      <li><i>CSS</i></li>
+      <li><i>JavaScript</i></li>
+    </ul>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $( function() {
+
+            $('li').on('click', function(event){    // bind <li> with 'click' event
+              alert('clicked '+ $(this).text());
+            });
+
+
+            /* $('li').trigger('click'); */  // trigger 'click' event automaticly
+            $('li').click();    // same effect as .trigger()
+
+        });
+    </script>
+</body>
+</html>

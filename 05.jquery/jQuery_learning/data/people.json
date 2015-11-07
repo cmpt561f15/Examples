@@ -1,0 +1,17 @@
+{ "people" : [
+  {
+    "name" : "Ali",
+    "url" : "http://ali.com/",
+    "bio" : "I create html 5 websites and useful jQuery plugins."
+  },
+  {
+    "name" : "Sara",
+    "url" : "http://sara.com",
+    "bio" : "Senior JS dev at FunCo"
+  },
+  {
+    "name" : "Ahmed",
+    "url" : "http://ahmed.com",
+    "bio" : "Super-enthusiastic about open web technologies..."
+  }
+] }

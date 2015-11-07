@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+
+</head>
+<body>
+
+    <ul>This is some HTML that you can use to try out jQuery in the editor on the left. Use your browser's console to see the HTML.
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $( function() {
+            $('li').addClass('hidden');     // hides all <li> elements
+            $('li').eq(1).removeClass('hidden');    // shows <li> element 'CSS'
+        });
+    </script>
+</body>
+</html>

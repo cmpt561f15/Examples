@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My Angular 2 App</title>
+  <script src="../../node_modules/systemjs/dist/system.src.js"></script>
+  <script src="../../node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script>
+    System.config({
+      packages: {'app': {defaultExtension: 'js'}}
+    });
+    System.import('contacts-app');
+  </script>
+</head>
+<body>
+
+  <contacts-app>
+    Loading...
+  </contacts-app>
+
+  <!-- inject:js -->
+  <!-- endinject -->
+
+</body>
+</html>

@@ -37,8 +37,7 @@
     console.error(err);
   }
 
-  $.getJSON("data.js").success(onLoadSuccess).error(onLoadError);
-  // $.getJSON("data.js", onLoadSuccess).error(onLoadError);
+  $.get("data.js").success(onLoadSuccess).error(onLoadError);
   </script>
 </body>
 </html>

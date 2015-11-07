@@ -3,9 +3,13 @@
 build/
 dist/
 .idea/
+node_modules/
 private/
 oldExamples/
 DataGenerator.xlsx
+-compiled.js
+-compiled.js.map
+.js.map
 
 # Windows image file caches
 Thumbs.db

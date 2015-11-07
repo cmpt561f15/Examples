@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+
+    <div id="target">
+      This content will be replaced as you make successful AJAX requests.
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $( function() {
+            function doSomethingLater(fn,time){
+              var dfd=$.Deferred();
+
+              setTimeout(function(){
+                dfd.resolve(fn());
+              }, time||0);
+
+              return dfd.promise();
+            }
+
+      /*      var success = function(resp){
+              $('#target').html('it worked');
+            };
+
+            var err=function(req,status,err){
+              $('#target').html('it failed');
+            };
+
+            var dfd = doSomethingLater(function(){
+              // console.log('This function will be called in 100mx');
+              alert('This function will be called in 100ms');
+            }, 100);
+
+            dfd.then(success,err);     */
+
+            var dfd=doSomethingLater(function(){return 1;}, 100);
+
+            dfd
+              .pipe(function(resp){return resp+' '+resp;})
+              .done(function(upperCaseResp){
+                $('#target').html(upperCaseResp);
+              });
+        });
+    </script>
+</body>
+</html>

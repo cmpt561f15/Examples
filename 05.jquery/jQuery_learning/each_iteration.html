@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+
+    <ul>This is some HTML that you can use to try out jQuery in the editor on the left. Use your browser's console to see the HTML.
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $( function() {
+            $('li').each(function(index, elem){
+              // this: the current, raw DOM element
+              // index: the current element's index in the selection
+              // elem: the current, raw DOM element (same as this)
+                $(elem).prepend('<b>' + index + ': </b>');   // output: 0: HTML; 1: CSS; 2: JavaScript
+            });
+        });
+    </script>
+</body>
+</html>
