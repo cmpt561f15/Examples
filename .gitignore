@@ -5,6 +5,7 @@ dist/
 .idea/
 node_modules/
 private/
+old/
 oldExamples/
 DataGenerator.xlsx
 -compiled.js
