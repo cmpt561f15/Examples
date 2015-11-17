@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rubric Editor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="container">
+        <h1>Rubric Editor</h1>
+
+        <div id="dangerAlert" class="alert alert-danger alert-dismissable" role="alert" style="display:none">
+            <button class="close" aria-label="Close" data-hide="alert"><span aria-hidden="true">&times;</span></button>
+            <p id="errorMessage">You cannot delete this criterion</p>
+        </div>
+
+        <br />
+        <div class="rubric-table">
+            <table class="table table-bordered table-condensed table-hover table-striped" id="rubric-table">
+                <thead>
+                <tr>
+                    <td colspan="2">
+                        <button id="addCriterion" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                                Criterion
+                        </button>
+                        <button id="addLevel" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                            Level
+                        </button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="removeLevel btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                        <input type="text" class="form-control" value="Excellent" placeholder="Performance Level" />
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="removeLevel btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                        <input type="text" class="form-control" value="Good" placeholder="Performance Level" />
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="removeLevel btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                        <input type="text" class="form-control" value="Satisfactory" placeholder="Performance Level" />
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="removeLevel btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                        <input type="text" class="form-control" value="Poor" placeholder="Performance Level" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Coefficient Range</td>
+                    <td><input type="text" class="input-sm form-control form-control-inline" value="1" placeholder="Min" /><input type="text" class="input-sm form-control form-control-inline" value="0.9" placeholder="Max" /></td>
+                    <td><input type="text" class="input-sm form-control form-control-inline" value="0.89" placeholder="Min" /><input type="text" class="input-sm form-control form-control-inline" value="0.8" placeholder="Max" /></td>
+                    <td><input type="text" class="input-sm form-control form-control-inline" value="0.79" placeholder="Min" /><input type="text" class="input-sm form-control form-control-inline" value="0.6" placeholder="Max" /></td>
+                    <td><input type="text" class="input-sm form-control form-control-inline" value="0.59" placeholder="Min" /><input type="text" class="input-sm form-control form-control-inline" value="0" placeholder="Max" /></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <button class="removeCriterion btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                    </td>
+                    <td rowspan="1">
+                        <textarea class="form-control" rows="4" placeholder="Criterion Description"></textarea>
+                        <input style="margin-top: 10px" type="text" class="form-control" placeholder="Weight" />
+                    </td>
+                    <td><textarea class="form-control" rows="6" placeholder="Descriptor "></textarea></td>
+                    <td><textarea class="form-control" rows="6" placeholder="Descriptor "></textarea></td>
+                    <td><textarea class="form-control" rows="6" placeholder="Descriptor "></textarea></td>
+                    <td><textarea class="form-control" rows="6" placeholder="Descriptor "></textarea></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div>
+            <input type="button" class="btn btn-lg btn-success" id="save" value="Submit" />
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/rubric-editor.js"></script>
+
+</body>
+</html>
