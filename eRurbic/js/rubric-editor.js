@@ -12,8 +12,7 @@ $('#addLevel').click(function () {
 
     //Work around because above is not fully working-- Not the best! but working...
     $("#rubric-table tr:first").append('<td style="text-align: center;">'+
-        '<button class="removeLevel btn btn-danger btn-sm">' +
-        '<span class="glyphicon glyphicon-minus-sign"></span></button>' +
+        '<button class="close removeLevel" >&times;</button>' +
         '<input type="text" class="form-control" placeholder="Performance Level" /></td>');
     $("#rubric-table tr:nth-child(2)").append('<td><input type="text" class="input-sm form-control form-control-inline" min="1" max="100" placeholder="Min" /><input type="text" class="input-sm form-control form-control-inline"min="1" max="100" placeholder="Max" /></td>');
 });
@@ -49,4 +48,8 @@ $("#rubric-table").on("click",".removeLevel", function () {
         index++;
         $('td:eq(' + index + ')',this).remove();
     });
+});
+
+$("#closeAlert").on("click", function() {
+    $(this).closest('div').hide();
 });
