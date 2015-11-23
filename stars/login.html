@@ -1,0 +1,48 @@
+<!DOCTYPE htm>
+<html>
+<head>
+    <title>STARS - Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.js"></script>
+    <script>
+        System.config({
+            packages: {'js': {defaultExtension: 'js'}}
+        });
+        // loads /js/login.js
+        System.import('js/login');
+    </script>
+</head>
+
+<body>
+<div class="col-md-3 col-md-offset-4">
+    <div class="bs-callout bs-callout-info">
+        <h3>STARS - Login</h3>
+    </div>
+    <div class="alert alert-danger" style="display:none">
+        <a id="closeAlert" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span id="errorMessage"></span>
+    </div>
+    <form id="login-form">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </span>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" >
+        </div>
+        <div><br/></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+            </span>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
+        </div>
+        <br>
+        <div>
+            <input id="login" class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+        </div>
+    </form>
+</div>
+</body>
+</html>

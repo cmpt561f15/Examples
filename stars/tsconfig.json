@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
+  },
+  "files": [
+    "typings/tsd.d.ts",
+    "js/login.ts",
+    "js/Utils.ts",
+    "js/students.ts",
+    "js/AuthenticationService.ts",
+    "js/DataService.ts",
+    "js/StarsService.ts"
+  ]
+}

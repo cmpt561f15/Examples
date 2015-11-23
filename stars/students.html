@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STARS - Students at Risk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.js"></script>
+    <script>
+        System.config({
+            packages: {'js': {defaultExtension: 'js'}}
+        });
+        // loads /js/students.js
+        System.import('js/students');
+    </script>
+</head>
+<body>
+<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome <span id="userFullname"></span>&nbsp;&nbsp;&nbsp;
+    (<a id="logout" href="/logout">Logout</a>)
+</p>
+<h1>Students at risk</h1>
+
+<div id="coursesDiv">
+    <label for="coursesDD" class="control-label">Course</label>
+    <select id="coursesDD">
+        <option selected="selected" value=""> All </option>
+    </select>
+</div>
+<div id="programsDiv">
+    <label for="programsDD" class="control-label">Program</label>
+    <select id="programsDD">
+        <option selected="selected" value=""> All </option>
+    </select>
+</div>
+
+<input class="btn btn-primary" type="button" value="Add Followup Action">
+
+<div class="table-responsive">
+    <table id="studentsTable" class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Student Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Program</th>
+            <th>GPA</th>
+            <th>Risk Category</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <hr/>
+</div>
+
+</body>
+</html>
