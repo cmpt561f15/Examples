@@ -72,17 +72,20 @@ function onLogin() {
     }).then(function (actions) {
         console.log("Actions", actions);
         localStorage.setItem('actions', JSON.stringify(actions));
-        return Promise.all([starsService.getActionTypes(), starsService.getAdviserTypes(), starsService.getPrograms()]);
+        return Promise.all([starsService.getActionTypes(), starsService.getStaff(), starsService.getPrograms()]);
     }).then(function (results) {
-        var actionTypes = results[0], adviserTypes = results[1], programs = results[2];
+        var actionTypes = results[0], staff = results[1], programs = results[2];
         //Only keep the prgrams the current user has access to
         if (typeof adviserPrograms !== "undefined") {
             programs = programs.filter(function (p) { return adviserPrograms.indexOf(p.Code) >= 0; });
             localStorage.setItem('programs', JSON.stringify(programs));
         }
-        console.log(actionTypes, adviserTypes, programs);
+        console.log(actionTypes, staff, programs);
+        var coordinators = staff.filter(function (s) { return s.Type === 'Coordinator'; }).map(function (s) { return s.Username; });
+        var advisors = staff.filter(function (s) { return s.Type === 'Adviser'; }).map(function (s) { return s.Username; });
         localStorage.setItem('actionTypes', JSON.stringify(actionTypes));
-        localStorage.setItem('adviserTypes', JSON.stringify(adviserTypes));
+        localStorage.setItem('coordinators', JSON.stringify(coordinators));
+        localStorage.setItem('advisors', JSON.stringify(advisors));
         Utils_1.default.redirect('students.html');
     }).catch(function (error) {
         $('#errorMessage').text(error).closest('div').show();

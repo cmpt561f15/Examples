@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Actions</title>
+    <title>STARS - Students at Risk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.js"></script>
+    <script>
+        System.config({
+            packages: {'js': {defaultExtension: 'js'}}
+        });
+        System.import('js/actions');
+    </script>
 </head>
 <body>
-<p class="text-right">Welcome Fn1 Ln1 (<a href="">logout</a>)</p>
-<ul class="bg-danger">
-    <li>
-        The user should be asked to confrim before deleting an action.
-    </li>
-    <li>Remove this ul from your final submission</li>
-</ul>
+<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome <span id="userFullname"></span>&nbsp;&nbsp;&nbsp;
+    (<a id="logout" href="/logout">Logout</a>)
+</p>
+
 <div class="row wider">
     <div class="form-group form-group-condensed col-xs-12 col-sm-3 col-sm-push-2">
         <br />
         <label for="actionby">By</label>
         <select id="actionby">
-            <option>Me</option>
-            <option>Adviser</option>
-            <option>Coordinator</option>
-            <option>All</option>
+            <option value="">All</option>
+            <option value="me">Me</option>
+            <option value="adviser">Adviser</option>
+            <option value="coordinator">Coordinator</option>
+            <option value="faculty">Faculty</option>
         </select>
     </div>
 
     <div class="form-group form-group-condensed col-xs-12 col-sm-3 col-sm-push-2" >
         <label for="students">Students</label>
-        <br><button type="button" class="btn btn-info">Prev</button>
+        <br><button id="prev" type="button" class="navButton btn btn-info">Prev</button>
         <select id="students">
-            <option>Samir Saghir (123)</option>
-            <option>Aamir Hussain (234)</option>
-            <option>Yasir Khan (456)</option>
         </select>
-        <button type="button" class="btn btn-info">Next</button>
+        <button id="next" type="button" class="navButton btn btn-info">Next</button>
     </div>
 </div>
 <div>
-    <input class="btn btn-primary" type="button" value="Add Followup Action">
+    <input id="addAction" class="btn btn-primary" type="button" value="Add Followup Action">
 </div>
 <h3>Actions</h3>
 <div class="table-responsive">
-    <table class="table table-bordered table-condensed table-hover table-striped">
-        <tr>
-            <th>#</th>
-            <th>Course</th>
-            <th>Date</th>
-            <th>By</th>
-            <th>Type</th>
-            <th>Title</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>GENG 106</td>
-            <td>15/10/2015</td>
-            <td>Dr. Abbas Ibn Firnas</td>
-            <td>Email</td>
-            <td>First Warning</td>
-            <td><a href="">Details</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Edit</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>GENG 107</td>
-            <td>10/10/2015</td>
-            <td>Dr. Abbas Ibn Firnas</td>
-            <td>Email</td>
-            <td>Alert</td>
-            <td><a href="">Details</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Edit</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Delete</a>
-            </td>
-        </tr>
+    <table id="actionsTable" class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>By</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
     </table>
     </div>
+    <div id="actionForm"></div>
 </body>
 </html>

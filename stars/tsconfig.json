@@ -12,6 +12,7 @@
     "typings/tsd.d.ts",
     "js/login.ts",
     "js/Utils.ts",
+    "js/actions.ts",
     "js/students.ts",
     "js/AuthenticationService.ts",
     "js/DataService.ts",

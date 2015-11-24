@@ -80,18 +80,23 @@ function onLogin() {
     }).then(actions => {
         console.log("Actions", actions);
         localStorage.setItem('actions', JSON.stringify(actions));
-        return Promise.all([starsService.getActionTypes(), starsService.getAdviserTypes(), starsService.getPrograms()]);
+        return Promise.all([starsService.getActionTypes(), starsService.getStaff(), starsService.getPrograms()]);
     }).then(results => {
-        let [actionTypes, adviserTypes, programs] = results;
+        let [actionTypes, staff, programs] = results;
 
         //Only keep the prgrams the current user has access to
         if (typeof adviserPrograms !== "undefined") {
             programs = programs.filter(p => adviserPrograms.indexOf(p.Code) >= 0);
             localStorage.setItem('programs', JSON.stringify(programs));
         }
-        console.log(actionTypes, adviserTypes, programs);
+        console.log(actionTypes, staff, programs);
+
+        let coordinators : string[] = staff.filter(s => s.Type === 'Coordinator').map(s => s.Username);
+        let advisors : string [] = staff.filter(s => s.Type === 'Adviser').map(s => s.Username);
+
         localStorage.setItem('actionTypes', JSON.stringify(actionTypes));
-        localStorage.setItem('adviserTypes', JSON.stringify(adviserTypes));
+        localStorage.setItem('coordinators', JSON.stringify(coordinators));
+        localStorage.setItem('advisors', JSON.stringify(advisors));
 
         Utils.redirect('students.html');
     }).catch (error => {

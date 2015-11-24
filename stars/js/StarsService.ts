@@ -87,21 +87,12 @@ export default class StarsService {
         return this.dataService.getResource('actionTypes');
     }
     
-    getAdviserTypes() {
-        return this.dataService.getResource('adviserTypes');
+    getStaff() {
+        return this.dataService.getResource('staff');
     }
 
     getPrograms() {
         return this.dataService.getResource('programs');
-    }
-
-    //Get programs and convert them to maps
-    toMap(programs) {
-        let programsMap = new Map<string, string>();
-        for (let program of programs) {
-            programsMap.set(program.Code, program.Name)
-        }
-        return programsMap;
     }
 
     /*

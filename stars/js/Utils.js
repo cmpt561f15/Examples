@@ -16,11 +16,30 @@ var Utils = (function () {
         $('#userFullname').text(currentUser.Firstname + " " + currentUser.Lastname);
     };
     Utils.logout = function () {
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('courses');
-        localStorage.removeItem('programs');
-        localStorage.removeItem('students');
+        localStorage.clear();
         this.redirect('login.html');
+    };
+    Utils.getQueryStringValue = function (param) {
+        var sPageURL = window.location.search.substring(1);
+        var queryStringVars = sPageURL.split('&');
+        for (var i = 0; i < queryStringVars.length; i++) {
+            var paramName = queryStringVars[i].split('=');
+            if (paramName[0] == param) {
+                return paramName[1];
+            }
+        }
+    };
+    Utils.setTodayDate = function (elementId) {
+        document.getElementById(elementId).valueAsDate = new Date();
+    };
+    Utils.toDate = function (strDate) {
+        var dateParts = strDate.split("/");
+        console.log("dateParts: ", dateParts);
+        return dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+    };
+    Utils.formatDate = function (date) {
+        var dateParts = date.split("-");
+        return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
     };
     return Utils;
 })();

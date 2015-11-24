@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.js"></script>
     <script>
         System.config({
@@ -34,7 +36,7 @@
     </select>
 </div>
 
-<input class="btn btn-primary" type="button" value="Add Followup Action">
+<input id="addAction" class="btn btn-primary" type="button" value="Add Followup Action">
 
 <div class="table-responsive">
     <table id="studentsTable" class="table table-bordered table-condensed table-hover table-striped">
@@ -57,6 +59,7 @@
     </table>
     <hr/>
 </div>
+<div id="actionForm"></div>
 
 </body>
 </html>

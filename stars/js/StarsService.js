@@ -83,20 +83,11 @@ var StarsService = (function () {
     StarsService.prototype.getActionTypes = function () {
         return this.dataService.getResource('actionTypes');
     };
-    StarsService.prototype.getAdviserTypes = function () {
-        return this.dataService.getResource('adviserTypes');
+    StarsService.prototype.getStaff = function () {
+        return this.dataService.getResource('staff');
     };
     StarsService.prototype.getPrograms = function () {
         return this.dataService.getResource('programs');
-    };
-    //Get programs and convert them to maps
-    StarsService.prototype.toMap = function (programs) {
-        var programsMap = new Map();
-        for (var _i = 0; _i < programs.length; _i++) {
-            var program = programs[_i];
-            programsMap.set(program.Code, program.Name);
-        }
-        return programsMap;
     };
     /*
      Check if an array contains any elements in another array

@@ -1,8 +1,14 @@
 import Utils from "./Utils";
+import * as ActionFormController from "./ActionFormController";
 
 $(function () {
+    if (localStorage.getItem('currentUser') === null) {
+        Utils.redirect('login.html');
+        return;
+    }
+
     let currentUser = JSON.parse(localStorage.currentUser);
-    var students = JSON.parse(localStorage.students);
+    let students = JSON.parse(localStorage.students);
 
     $('#coursesDiv').hide();
     $('#programsDiv').hide();
@@ -23,6 +29,38 @@ $(function () {
     $('#logout').on('click', (event) => {
         event.preventDefault();
         Utils.logout();
+    });
+
+    $('#programsDD').on('change', function() {
+        let selectedProgram = this.value;
+        let studentsToDispaly = students;
+        if (selectedProgram != '') {
+            studentsToDispaly = students.filter(s => s.Program === selectedProgram);
+        }
+        studentsToHtml(studentsToDispaly);
+    });
+
+    $('#coursesDD').on('change', function() {
+        let selectedCourse = this.value;
+        let studentsToDispaly = students;
+        if (selectedCourse != '') {
+            selectedCourse = parseInt(selectedCourse);
+            studentsToDispaly = students.filter(s => s.Courses.indexOf(selectedCourse) >= 0);
+        }
+        studentsToHtml(studentsToDispaly);
+    });
+
+    $( "#actionForm" ).load( Utils.getBaseUrl() + "/action.html" );
+
+    let actionForm = ActionFormController.initActionForm();
+
+    $( "#addAction" ).on( "click", function() {
+        if ($("input:checked").length === 0) {
+            $(`<div><i class='fa fa-exclamation-triangle'></i>
+                Please select students first</div>`).dialog({'title': 'Alert'});
+            return;
+        }
+        actionForm.dialog( "open" );
     });
 });
 
@@ -47,7 +85,7 @@ function studentsToHtml(students){
     for(let student of students){
         $("#studentsTable tbody").append(
             `<tr>
-                <td><input type="checkbox" id="isSelected" value="${student.StudentId}" /></td>
+                <td><input type="checkbox" value="${student.StudentId}" /></td>
                 <td>${student.StudentId}</td>
                 <td>${student.FirstName}</td>
                 <td>${student.LastName}</td>
@@ -61,4 +99,3 @@ function studentsToHtml(students){
         )
     }
 }
-
