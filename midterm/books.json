@@ -1,0 +1,14 @@
+[
+  {
+    "isbn": 123,
+    "title": "JavaScript is cool!"
+  },
+  {
+    "isbn": 234,
+    "title": "jQuery is powerful!"
+  },
+  {
+    "isbn": 345,
+    "title": "Angular is fashionable!"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "loanId": 1,
+    "borrower": 10,
+    "isbn": 123,
+    "loanDate": "1/11/2015"
+  },
+  {
+    "loanId": 1,
+    "borrower": 20,
+    "isbn": 234,
+    "loanDate": "1/11/2015"
+  }
+]
