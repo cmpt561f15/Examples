@@ -18,7 +18,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         angular2_1.Component({
             selector: 'home',
-            template: '<h1 class="home">Home Component</h1>',
+            template: "<h1 class=\"home\">Home Component</h1>",
             styles: ['.home {background: red}'],
         }), 
         __metadata('design:paramtypes', [])
@@ -29,14 +29,17 @@ exports.HomeComponent = HomeComponent;
 // Product Details Component
 var ProductDetailComponent = (function () {
     function ProductDetailComponent(params, data) {
+        this.params = params;
         this.productID = params.get('id');
         console.log("Is this prod environment: " + data.get('isProd'));
     }
     ProductDetailComponent = __decorate([
         angular2_1.Component({
             selector: 'product',
-            template: "<h1 class=\"product\">Product Detail for Product: {{productID}}</h1>",
-            styles: ['.product {background: cyan}'] }), 
+            template: "\n            <home></home>\n            <h1 class=\"product\">\n            Product Detail for Product: {{productID}}</h1>",
+            styles: ['.product {background: cyan}'],
+            directives: [HomeComponent]
+        }), 
         __metadata('design:paramtypes', [router_1.RouteParams, router_1.RouteData])
     ], ProductDetailComponent);
     return ProductDetailComponent;
@@ -57,7 +60,7 @@ var RouterExampleRootComponent = (function () {
     RouterExampleRootComponent = __decorate([
         angular2_1.Component({
             selector: 'heros-app',
-            template: "<a [router-link]=\"['Home']\">Home</a>\n           <a [router-link]=\"['ProductDetail', {id: 1234}]\">Product Details</a>\n           <router-outlet></router-outlet>",
+            template: "\n           <h1>Welcome to router example</h1>\n           <a [router-link]=\"['Home']\">Home</a>\n           <a [router-link]=\"['ProductDetail', {id: 1234}]\">Product Details</a>\n           <router-outlet></router-outlet>",
             directives: [router_1.ROUTER_DIRECTIVES] }),
         router_1.RouteConfig([
             { path: '/', component: HomeComponent, as: 'Home' },

@@ -1,0 +1,12 @@
+{
+  "name": "angular2-forms",
+  "version": "0.0.1",
+  "scripts": {
+    "tsc": "tsc --project src --watch",
+    "start": "live-server --open=src"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.46",
+    "systemjs": "^0.19.5"
+  }
+}

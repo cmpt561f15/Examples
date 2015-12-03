@@ -6,7 +6,7 @@ import {RouteConfig,  ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteParams, RouteDat
 // Home Component
 @Component({
     selector: 'home',
-    template: '<h1 class="home">Home Component</h1>',
+    template: `<h1 class="home">Home Component</h1>`,
     styles: ['.home {background: red}'],
 })
 export class HomeComponent {}
@@ -14,8 +14,13 @@ export class HomeComponent {}
 // Product Details Component
 @Component({
     selector: 'product',
-    template: `<h1 class="product">Product Detail for Product: {{productID}}</h1>` , // 1
-    styles: ['.product {background: cyan}']})
+    template: `
+            <home></home>
+            <h1 class="product">
+            Product Detail for Product: {{productID}}</h1>` , // 1
+    styles: ['.product {background: cyan}'],
+    directives: [HomeComponent]
+})
 /*
  - The constructor of this component requests Angular to inject the object RouteParams,
   which contains all parameters that are passed to this component.
@@ -32,7 +37,7 @@ export class HomeComponent {}
 export class ProductDetailComponent {
     productID:string;
 
-    constructor(params:RouteParams, data: RouteData) {
+    constructor(public params:RouteParams, data: RouteData) {
         this.productID = params.get('id');
 
         console.log(`Is this prod environment: ${data.get('isProd')}`);
@@ -50,7 +55,9 @@ export class ProductDetailComponent {
  */
 @Component({
     selector: 'heros-app',
-    template: `<a [router-link]="['Home']">Home</a>
+    template: `
+           <h1>Welcome to router example</h1>
+           <a [router-link]="['Home']">Home</a>
            <a [router-link]="['ProductDetail', {id: 1234}]">Product Details</a>
            <router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES]})
