@@ -15,11 +15,9 @@ export class HomeComponent {}
 @Component({
     selector: 'product',
     template: `
-            <home></home>
             <h1 class="product">
             Product Detail for Product: {{productID}}</h1>` , // 1
-    styles: ['.product {background: cyan}'],
-    directives: [HomeComponent]
+    styles: ['.product {background: cyan}']
 })
 /*
  - The constructor of this component requests Angular to inject the object RouteParams,
@@ -54,7 +52,7 @@ export class ProductDetailComponent {
  we could have written {id: product.id} here.
  */
 @Component({
-    selector: 'heros-app',
+    selector: 'router-app',
     template: `
            <h1>Welcome to router example</h1>
            <a [router-link]="['Home']">Home</a>

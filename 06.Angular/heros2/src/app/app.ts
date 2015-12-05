@@ -4,8 +4,6 @@ import {RouteConfig,  ROUTER_DIRECTIVES, ROUTER_PROVIDERS,
     LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {Hero} from './hero'
 import {HeroFormComponent} from './hero-form.component'
-import {RouterExampleRootComponent} from './router-example'
-
 
 @Component({
     //selector: 'heros-app',
@@ -58,14 +56,12 @@ In our case <router-outlet></router-outlet> represents the area below the anchor
  */
 @RouteConfig([
     {path: '/', component: AppComponent, as: 'Home'},
-    {path: '/hero', component: HeroFormComponent, as: 'Hero'  },
-    {path: '/router', component: RouterExampleRootComponent, as: 'Router'  }
+    {path: '/hero', component: HeroFormComponent, as: 'Hero'  }
 ])
 @Component({
     selector: 'heros-app',
     template: `<a [router-link]="['Home']">Home</a>
-    <a [router-link]="['Hero']">Hero</a>
-    <a [router-link]="['Router']">Router Example</a>
+    <a [router-link]="['/Hero']">Hero</a>
     <router-outlet></router-outlet>`,
     directives: [ ROUTER_DIRECTIVES]
 })
@@ -86,4 +82,4 @@ class RootComponent{
  The browser will treat the fragment after the hash sign as an identifier of
  a specific client-side route.
  */
-//bootstrap(RootComponent, [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]);
+bootstrap(RootComponent, [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]);

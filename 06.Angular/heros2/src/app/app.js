@@ -14,7 +14,6 @@ var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var hero_1 = require('./hero');
 var hero_form_component_1 = require('./hero-form.component');
-var router_example_1 = require('./router-example');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Beloved Heroes';
@@ -63,12 +62,11 @@ var RootComponent = (function () {
     RootComponent = __decorate([
         router_1.RouteConfig([
             { path: '/', component: AppComponent, as: 'Home' },
-            { path: '/hero', component: hero_form_component_1.HeroFormComponent, as: 'Hero' },
-            { path: '/router', component: router_example_1.RouterExampleRootComponent, as: 'Router' }
+            { path: '/hero', component: hero_form_component_1.HeroFormComponent, as: 'Hero' }
         ]),
         angular2_1.Component({
             selector: 'heros-app',
-            template: "<a [router-link]=\"['Home']\">Home</a>\n    <a [router-link]=\"['Hero']\">Hero</a>\n    <a [router-link]=\"['Router']\">Router Example</a>\n    <router-outlet></router-outlet>",
+            template: "<a [router-link]=\"['Home']\">Home</a>\n    <a [router-link]=\"['/Hero']\">Hero</a>\n    <router-outlet></router-outlet>",
             directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
@@ -88,5 +86,5 @@ var RootComponent = (function () {
  The browser will treat the fragment after the hash sign as an identifier of
  a specific client-side route.
  */
-//bootstrap(RootComponent, [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]); 
+angular2_1.bootstrap(RootComponent, [router_1.ROUTER_PROVIDERS, angular2_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })]);
 //# sourceMappingURL=app.js.map

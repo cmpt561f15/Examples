@@ -36,9 +36,8 @@ var ProductDetailComponent = (function () {
     ProductDetailComponent = __decorate([
         angular2_1.Component({
             selector: 'product',
-            template: "\n            <home></home>\n            <h1 class=\"product\">\n            Product Detail for Product: {{productID}}</h1>",
-            styles: ['.product {background: cyan}'],
-            directives: [HomeComponent]
+            template: "\n            <h1 class=\"product\">\n            Product Detail for Product: {{productID}}</h1>",
+            styles: ['.product {background: cyan}']
         }), 
         __metadata('design:paramtypes', [router_1.RouteParams, router_1.RouteData])
     ], ProductDetailComponent);
@@ -59,7 +58,7 @@ var RouterExampleRootComponent = (function () {
     }
     RouterExampleRootComponent = __decorate([
         angular2_1.Component({
-            selector: 'heros-app',
+            selector: 'router-app',
             template: "\n           <h1>Welcome to router example</h1>\n           <a [router-link]=\"['Home']\">Home</a>\n           <a [router-link]=\"['ProductDetail', {id: 1234}]\">Product Details</a>\n           <router-outlet></router-outlet>",
             directives: [router_1.ROUTER_DIRECTIVES] }),
         router_1.RouteConfig([
