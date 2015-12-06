@@ -39,7 +39,7 @@ import { TravelService } from './travel-service'
 })
 export class TravelEdit {
     travel: Travel;
-    constructor(tm: TravelService, params: RouteParams) {
-        this.travel = tm.find(params.get('id'));
+    constructor(travelService: TravelService, params: RouteParams) {
+        this.travel = travelService.find(params.get('id'));
     }
 }

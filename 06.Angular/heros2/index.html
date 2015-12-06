@@ -1,36 +1,29 @@
-<!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Angular Resources">
-    <title>Angular 2 Travels</title>
+    <title>Heros</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/pure-min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
-
-    <travel-app></travel-app>
 
     <!-- ES6-related imports -->
-    <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="/node_modules/systemjs/dist/system.js"></script>
 
     <script>
         //configure system loader
         System.config({defaultJSExtensions: true});
     </script>
+
     <script src="/node_modules/angular2/bundles/angular2.min.js"></script>
     <script src="/node_modules/angular2/bundles/http.min.js"></script>
     <script src="/node_modules/angular2/bundles/router.min.js"></script>
-
     <script>
         //bootstrap the Angular2 application
-        System.import('dist/travel-app').catch(console.log.bind(console));
+        System.import('/src/app/bootstrap').catch(console.log.bind(console));
     </script>
-
+</head>
+<body>
+    <heros-app>Loading...</heros-app>
 </body>
 </html>

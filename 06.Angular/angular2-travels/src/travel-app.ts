@@ -12,7 +12,7 @@ import {
     APP_BASE_HREF
 } from 'angular2/router';
 
-import { TravelService, SampleTravelManager } from './travel-service'
+import { TravelService } from './travel-service'
 import { TravelList } from './travel-list'
 import { TravelEdit } from './travel-edit'
 

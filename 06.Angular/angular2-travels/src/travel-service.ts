@@ -1,4 +1,3 @@
-
 import { Travel } from './travel'
 import {Injectable} from 'angular2/angular2';
 
@@ -11,14 +10,16 @@ export class TravelService {
             new Travel("YO2014", "Yosemite", "USA", 2014, "yosemite.jpg"),
             new Travel("BT2013", "Bretagne", "France", 2013, "bretagne.jpg")
     ];
+
     constructor() {
     }
+
     find(id: string): Travel {
         return this.list.filter(c => c.id == id)[0];
     }
+
     remove(travel: Travel) {
         let index = this.list.indexOf(travel);
         this.list.splice(index, 1);
     }
 }
-
