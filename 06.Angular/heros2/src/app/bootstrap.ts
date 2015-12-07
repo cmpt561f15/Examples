@@ -5,6 +5,7 @@ import {
     LocationStrategy,
     HashLocationStrategy
 } from 'angular2/router';
+import {HTTP_BINDINGS} from 'angular2/http';
 import {HeroApp} from './components/hero-app'
 import {HeroService} from "./services/hero-service";
 
@@ -21,7 +22,10 @@ import {HeroService} from "./services/hero-service";
  The browser will treat the fragment after the hash sign as an identifier of
  a specific client-side route.
  */
-bootstrap(HeroApp, [HeroService,
-    ROUTER_PROVIDERS,
-    provide(LocationStrategy, {useClass: HashLocationStrategy})
-]);
+bootstrap(HeroApp,
+    [
+        HeroService,
+        ROUTER_PROVIDERS, HTTP_BINDINGS,
+        provide(LocationStrategy, {useClass: HashLocationStrategy})
+    ]
+);

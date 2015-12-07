@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Muhammad Ibn `Abd Allāh",
+    "heroType": "Prophet"
+  },
+  {
+    "id": 2,
+    "name": "Abu Bakr Al-Siddiq",
+    "heroType": "Companion"
+  },
+  {
+    "id": 3,
+    "name": "Umar ibn Al-Khattāb",
+    "heroType": "Companion"
+  },
+  {
+    "id": 4,
+    "name": "Uthman Ibn Affan",
+    "heroType": "Companion"
+  },
+  {
+    "id": 5,
+    "name": "Ali ibn Abi Talib",
+    "heroType": "Companion"
+  }
+]

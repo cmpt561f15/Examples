@@ -1,16 +1,17 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+import Observable from '@reactivex/rxjs/dist/cjs/Observable'
 import {Hero} from '../models/hero'
+import {Quote} from '../models/quote'
 import {HeroViewer} from './hero-show'
 import {HeroService} from "../services/hero-service";
 
 @Component({
     selector: 'heros-app',
     template: `
-          <h2>Selected hero: {{selectedHero.name}}</h2>
-          <p>Heroes:</p>
+       <div *ng-if="heroService.heroes">
           <table>
-            <tr *ng-for="#hero of heroes">
+            <tr *ng-for="#hero of heroService.heroes">
                 <td>
                   {{ hero.name }}
                 </td>
@@ -27,20 +28,44 @@ import {HeroService} from "../services/hero-service";
                 </td>
           </tr>
           </table>
-          <hero-show [hero]="selectedHero"></hero-show>
+          <h2>Selected hero: {{heroService.selectedHero.name}}</h2>
+          <hero-show [hero]="heroService.selectedHero"></hero-show>
+        </div>
         `,
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, HeroViewer ]
 })
 export class HeroList {
-    selectedHero : Hero;
-    heroes : Hero[];
     constructor(public heroService : HeroService) {
-        this.heroes = this.heroService.heroes;
-        this.selectedHero = this.heroes[0];
+    }
+
+    //auto-executed during the component initialization
+    ngOnInit() {
+        //If the heroes list is undefined then fetch the data from REST service
+        if (!this.heroService.heroes) {
+            //After getting the heros -> get their quotes
+            //This is a demo of two async call done in sequence
+            this.heroService.fetchHeros().subscribe((heroes:Hero[]) => {
+                this.heroService.fetchQuotes().subscribe(
+                    (quotes:Quote[]) => {
+                        console.log('Quotes', quotes);
+
+                        for (let quote of quotes) {
+                            let indx = heroes.findIndex(h => h.id === quote.heroId);
+                            heroes[indx].quote = quote.quote;
+                        }
+                        console.log('Heroes', heroes);
+                        this.heroService.heroes = heroes;
+                        this.heroService.selectedHero = heroes[0];
+                    },
+                    (err) => console.error('There was an error: ' + err),
+                    () => console.log('Completed!')
+                );
+            });
+        }
     }
 
     select(hero: Hero) {
-        this.selectedHero = hero;
+        this.heroService.selectedHero = hero;
         return false;
     }
     remove(hero: Hero) {

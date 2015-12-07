@@ -1,5 +1,5 @@
 import {
-    Component,
+    Component, Input,
     CORE_DIRECTIVES
 } from 'angular2/angular2';
 
@@ -41,10 +41,10 @@ import {Hero} from '../models/hero'
         </div>
     `,
     directives: [CORE_DIRECTIVES],
-    inputs: ['hero']
 })
+
 export class HeroViewer {
-    hero: Hero;
+    @Input() hero: Hero;
     constructor() {
     }
 }

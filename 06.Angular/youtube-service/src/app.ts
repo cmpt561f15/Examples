@@ -13,7 +13,7 @@ import {YouTube} from './youtube'
     <div *ng-for="#video of results | async">
       <h3>{{video.snippet.title}}</h3>
       <p>{{video.snippet.title}}</p>
-      <img [src]="video.snippet.thumbnails.default.url"></img>
+      <img [src]="video.snippet.thumbnails.default.url">
       <p>
         <span>{{(video.id.kind)}} : </span>
         <a *ng-if="video.id.kind === 'youtube#video'" target="_blank" href="https://www.youtube.com/watch?v={{video.id.videoId}}">
@@ -35,8 +35,8 @@ export class App {
   constructor(public youtube:YouTube) {
     //search input (observable!)
     this.results = this.search.valueChanges
-      .debounceTime(150)
-      .switchMap(text => this.youtube.search(text));
+      .debounceTime(150)  //wait for 150 milliseconds
+      .switchMap(text => this.youtube.search(text));  //pass the observable from search textbox to youtube search
   }
   
 }

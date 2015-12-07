@@ -13,6 +13,7 @@ export class HeroEditor {
     hero: Hero;
     constructor(public heroService: HeroService, public router: Router, params: RouteParams) {
         this.hero = heroService.find(params.get('id'));
+        this.heroService.selectedHero = this.hero;
     }
 
     onSubmit() {
