@@ -43,7 +43,7 @@ export class HeroList {
         //If the heroes list is undefined then fetch the data from REST service
         if (!this.heroService.heroes) {
             //After getting the heros -> get their quotes
-            //This is a demo of two async call done in sequence
+            //This is a demo of two async calls done in sequence
             this.heroService.fetchHeros().subscribe((heroes:Hero[]) => {
                 this.heroService.fetchQuotes().subscribe(
                     (quotes:Quote[]) => {
