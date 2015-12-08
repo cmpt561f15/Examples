@@ -11,6 +11,7 @@ import {
     HashLocationStrategy,
     APP_BASE_HREF
 } from 'angular2/router';
+import {HTTP_BINDINGS} from 'angular2/http';
 
 import { TravelService } from './travel-service'
 import { TravelList } from './travel-list'
@@ -36,7 +37,7 @@ export class TravelApp {
 
 bootstrap(TravelApp, [
     TravelService,
-    ROUTER_PROVIDERS,
+    ROUTER_PROVIDERS, HTTP_BINDINGS,
     provide(LocationStrategy, {useClass: HashLocationStrategy}),
     provide(APP_BASE_HREF, {useValue: '/'})
 ]);

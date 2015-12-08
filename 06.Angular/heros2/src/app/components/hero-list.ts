@@ -1,6 +1,5 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, Observable, CORE_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import Observable from '@reactivex/rxjs/dist/cjs/Observable'
 import {Hero} from '../models/hero'
 import {Quote} from '../models/quote'
 import {HeroViewer} from './hero-show'
