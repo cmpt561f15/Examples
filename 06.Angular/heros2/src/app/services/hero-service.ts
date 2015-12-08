@@ -38,4 +38,11 @@ export class HeroService {
         let index = this.heroes.indexOf(hero);
         this.heroes.splice(index, 1);
     }
+
+    add(hero:Hero) {
+        hero.id = this.heroes[this.heroes.length -1].id + 1;
+        this.heroes.push(hero);
+        this.selectedHero = hero;
+        console.log(hero);
+    }
 }

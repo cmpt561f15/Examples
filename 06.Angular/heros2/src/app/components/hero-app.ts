@@ -30,7 +30,8 @@ In our case <router-outlet></router-outlet> represents the area below the anchor
  */
 @RouteConfig([
     {path: '/', component: HeroList, as: 'Home'},
-    {path: '/edit/:id', component: HeroEditor, as: 'Edit'  }
+    {path: '/edit/:id', component: HeroEditor, as: 'Edit'  },
+    {path: '/add', component: HeroEditor, as: 'Add'  }
 ])
 @Component({
     selector: 'heros-app',

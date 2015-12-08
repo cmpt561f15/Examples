@@ -11,12 +11,22 @@ import {HeroService} from "../services/hero-service";
 export class HeroEditor {
     heroTypes = ['Prophet', 'Companion', 'Scholar'];
     hero: Hero;
+
     constructor(public heroService: HeroService, public router: Router, params: RouteParams) {
-        this.hero = heroService.find(params.get('id'));
-        this.heroService.selectedHero = this.hero;
+        console.log('params.get("id") : ', params.get('id'));
+        if (params.get('id') != null) {
+            this.hero = heroService.find(params.get('id'));
+            this.heroService.selectedHero = this.hero;
+        } else {
+            console.log('Entered HeroEditor add mode');
+            this.hero = new Hero(0, '', '');
+        }
     }
 
     onSubmit() {
+        if (this.hero.id === 0) {
+            this.heroService.add(this.hero);
+        }
         this.router.navigate(['/Home']);
     }
 }

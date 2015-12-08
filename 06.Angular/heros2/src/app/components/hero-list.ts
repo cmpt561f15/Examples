@@ -1,5 +1,5 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import Observable from '@reactivex/rxjs/dist/cjs/Observable'
 import {Hero} from '../models/hero'
 import {Quote} from '../models/quote'
@@ -9,6 +9,9 @@ import {HeroService} from "../services/hero-service";
 @Component({
     selector: 'heros-app',
     template: `
+       <a href (click)="add()" class="btn btn-info">
+            <i class="fa fa-plus"></i> Add
+       </a>
        <div *ng-if="heroService.heroes">
           <table>
             <tr *ng-for="#hero of heroService.heroes">
@@ -16,13 +19,13 @@ import {HeroService} from "../services/hero-service";
                   {{ hero.name }}
                 </td>
                 <td>
-                    <a href (click)="select(hero)" class="pure-button">
+                    <a href (click)="select(hero)" class="btn btn-info">
                         <i class="fa fa-caret-square-o-down"></i> Show
                     </a>
-                    <a href [router-link]="['/Edit', {id: hero.id}]" class="pure-button">
+                    <a href [router-link]="['/Edit', {id: hero.id}]" class="btn btn-info">
                         <i class="fa fa-pencil-square-o"></i> Edit
                     </a>
-                    <a href (click)="remove(hero)" class="pure-button">
+                    <a href (click)="remove(hero)" class="btn btn-info">
                         <i class="fa fa-trash-o"></i> Remove
                     </a>
                 </td>
@@ -34,8 +37,9 @@ import {HeroService} from "../services/hero-service";
         `,
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, HeroViewer ]
 })
+
 export class HeroList {
-    constructor(public heroService : HeroService) {
+    constructor(public heroService : HeroService, public router: Router) {
     }
 
     //auto-executed during the component initialization
@@ -64,12 +68,20 @@ export class HeroList {
         }
     }
 
+    add() {
+        this.router.navigate(['/Add']);
+        return false;
+    }
+
     select(hero: Hero) {
         this.heroService.selectedHero = hero;
         return false;
     }
+
     remove(hero: Hero) {
-        this.heroService.remove(hero);
+        if (confirm("Confirm delete?")) {
+            this.heroService.remove(hero);
+        }
         return false;
     }
 }

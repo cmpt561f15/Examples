@@ -22,7 +22,7 @@ import {Hero} from '../models/hero'
         </style>
         <div *ng-if="hero">
             <h2>Hero details:</h2>
-            <table class="pure-table pure-table-bordered"  id="hero-show">
+            <table class="table table-striped"  id="hero-show">
                 <tbody>
                     <tr>
                         <td class="label">Name</td>
