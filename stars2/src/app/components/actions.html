@@ -1,0 +1,82 @@
+<div *ngIf="DeleteActionCofirm" class="modal fade in" id="delmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+    <div class="modal-dialog  " role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title">Delete Action? </h4>
+            </div>
+            <div class="modal-footer">
+                <button (click)="onClose()" type="button" class="btn btn-default" >No</button>
+                <button (click)=" onCofirm()" id="deletconfirm" type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<action-form [class.hidden]="!openForm" [action]="editedAction" [actiondate]="editedActionDate"  [mode]="editActionMode"
+             (closeform)="onCloseForm()" (submitform)="onSubmitForm($event)" >
+</action-form>
+
+<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome {{ currentUser.Firstname  }}
+    {{ currentUser.Lastname }}
+    (<a
+            [routerLink]="['/Login']"
+            (click)="onLogout()">Logout</a>)
+</p>
+
+<div class="row wider">
+    <div class="form-group form-group-condensed col-xs-12 col-sm-3 col-sm-push-2">
+        <br />
+        <label for="actionby">By</label>
+        <select [(ngModel)]="selectedActionBy" #actionby id="actionby" (change)="filterActionsBy(actionby.value)">
+            <option value="all">All</option>
+            <option value="me">Me</option>
+            <option value="adviser">Adviser</option>
+            <option value="coordinator">Coordinator</option>
+            <option value="faculty">Faculty</option>
+        </select>
+    </div>
+
+    <div class="form-group form-group-condensed col-xs-12 col-sm-3 col-sm-push-2" >
+        <label for="students">Students</label>
+        <br><button (click)="prevStudent(student.value)" id="prev" type="button" class="navButton btn btn-info">Prev</button>
+        <select #student [(ngModel)]="selectedStudent" id="students" (change)="selectStudent(student.value)" >
+            <option *ngFor="#student of students"
+                    value="{{student.StudentId}}">{{student.StudentId}} - {{student.FirstName}} {{student.LastName}}</option>
+        </select>
+        <button (click)="nextStudent(student.value)" id="next" type="button" class="navButton btn btn-info">Next</button>
+    </div>
+</div>
+<div>
+    <input (click)="actionEditor('','','Add')" id="addAction" class="btn btn-primary" type="button" value="Add Followup Action">
+</div>
+<h3>Actions</h3>
+<div class="table-responsive">
+    <table id="actionsTable" class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>By</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="#action of filteredActions">
+                <td>{{action.ActionId}}</td>
+                <td >{{action.CourseCRN}}</td>
+                <td>{{action.Date}}</td>
+                <td>{{action.ByWhom}}</td>
+                <td>{{action.ActionType}}</td>
+                <td>{{action.Title}}</td>
+                <td><a (click)="actionEditor(action.ActionId,$event,'Edit')" class="view" href="">Details</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a (click)="actionEditor(action.ActionId,$event,'Edit')"  href="">Edit</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a  (click)="showConfirm(action.ActionId,$event)" href="" >Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div id="actionForm"></div>
