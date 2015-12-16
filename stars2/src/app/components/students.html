@@ -2,8 +2,8 @@
              (closeform)="onCloseForm()" (submitform)="onSubmitForm($event)" >
 
 </action-form>
-<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome {{ currentUser.Firstname  }}
-    {{ currentUser.Lastname }}
+<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome {{ starsService.currentUser.Firstname  }}
+    {{ starsService.currentUser.Lastname }}
     (<a
             [routerLink]="['/Login']"
             (click)="onLogout()">Logout</a>)
@@ -14,14 +14,14 @@
     <label for="coursesDD" class="control-label">Course</label>
     <select #crs id="coursesDD" (change)="filterByCourse(crs.value)">
         <option selected="selected" value="ALL"> All </option>
-        <option *ngFor="#course of courses" value="{{course.CRN}}">{{course.CRN}} {{course.CourseName}}</option>
+        <option *ngFor="#course of starsService.courses" value="{{course.CRN}}">{{course.CRN}} {{course.CourseName}}</option>
     </select>
 </div>
 <div  *ngIf="isAdviser">
     <label for="programsDD" class="control-label">Program</label>
     <select #prog id="programsDD" (change)="filterByProgram(prog.value)" >
         <option selected="selected" value="ALL"> All </option>
-        <option *ngFor="#program of programs" value="{{program.Code}}">{{program.Name}}({{program.Code}})</option>
+        <option *ngFor="#program of starsService.programs" value="{{program.Code}}">{{program.Name}}({{program.Code}})</option>
     </select>
 </div>
 

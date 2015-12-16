@@ -25,7 +25,7 @@ var StarsApp = (function () {
         ]),
         core_1.Component({
             selector: 'stars-app',
-            template: "<router-outlet></router-outlet>\n               <router-outlet name=\"deleteAction\"></router-outlet>\n                ",
+            template: "<router-outlet></router-outlet>\n               <router-outlet name=\"deleteAction\"></router-outlet>",
             directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])

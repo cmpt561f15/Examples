@@ -2,79 +2,68 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig,  ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteParams, RouteData,
     LocationStrategy, HashLocationStrategy,Router} from 'angular2/router';
-import AuthenticationService from '../services/AuthenticationService';
-import DataService from "../services/DataService";
-import StarsService from '../services/StarsService';
+import StarsService from "../services/stars-service";
 import Utils from "../services/Utils";
+
 @Component({
     selector: 'login',
-    providers: [AuthenticationService, DataService,StarsService ],
     templateUrl: './app/components/login.html',
-
     directives: [CORE_DIRECTIVES,ROUTER_DIRECTIVES]
 })
 
 
-
 export class LoginComponent {
+    authenticateFailed: boolean = false;
 
-    username;
-    password;
-    alert : boolean = true;
-    isDeauthenticated: boolean = false;
-    constructor ( public as : AuthenticationService, public ds: DataService,
-                  public ss: StarsService, public router:Router  ){}
-    onLogin (){
+    constructor (public starsService: StarsService, public router:Router ){}
+
+    onLogin (username: string, password: string){
         let currentUser;
         var adviserPrograms;
-        this.as.login(this.username,this.password).subscribe(
+        this.starsService.login(username, password).subscribe(
             user => {
-                currentUser = user;
-                localStorage.setItem('currentUser', JSON.stringify(user));
+
+                console.log("starsService.currentUser", this.starsService.currentUser);
+
                 let getStudentsObservable = (user.Type === "Faculty") ?
-                    this.ss.getStudentsByInstructor(user.StaffNo) :
-                    this.ss.getStudentsByProgram(user.Program);
+                    this.starsService.getStudentsByInstructor(user.StaffNo) :
+                    this.starsService.getStudentsByProgram(user.Program);
 
                 getStudentsObservable.subscribe(
                     results => {
                         //In case of faculty the method will return both students and courses
                         let students, instructorCourses;
-                        if (currentUser.Type === "Faculty") {
-                            [students, instructorCourses] = results;
-                            console.log("Instructor Courses", instructorCourses);
-                            localStorage.setItem('courses', JSON.stringify(instructorCourses));
+                        if (user.Type === "Faculty") {
+                            //[students, instructorCourses] = results;
+                            console.log("this.starsService.instructorCourses", this.starsService.instructorCourses);
                         } else {
-                            [students, adviserPrograms] = results;
+                            console.log("this.starsService.adviserPrograms", this.starsService.adviserPrograms);
+                            //[students, adviserPrograms] = results;
                         }
-                        console.log("Students", students);
-                        localStorage.setItem('students', JSON.stringify(students));
+                        console.log("Students", this.starsService.students);
 
-                        this.ss.getActions(students).subscribe(
+                        this.starsService.getActions(this.starsService.students).subscribe(
                             actions => {
-                                console.log("Actions", actions);
-                                localStorage.setItem('actions', JSON.stringify(actions));
+                                console.log("Actions", this.starsService.actions);
                                 //let actionTypes, staff, programs;
-                                this.ss.getPrograms().subscribe(
+                                this.starsService.getPrograms().subscribe(
                                     programs => {
-                                        if (typeof adviserPrograms !== "undefined") {
-                                            programs = programs.filter(p => adviserPrograms.indexOf(p.Code) >= 0);
-                                            localStorage.setItem('programs', JSON.stringify(programs));
+                                        if (typeof this.starsService.adviserPrograms !== "undefined") {
+                                            this.starsService.programs = programs.filter(p => this.starsService.adviserPrograms.indexOf(p.Code) >= 0);
                                         }
                                     }
                                 );
 
-                                this.ss.getActionTypes().subscribe(
+                                this.starsService.getActionTypes().subscribe(
                                     actionTypes => {
-                                        localStorage.setItem('actionTypes', JSON.stringify(actionTypes));
+                                        this.starsService.actionTypes = actionTypes;
                                     }
                                 );
 
-                                this.ss.getStaff().subscribe(
+                                this.starsService.getStaff().subscribe(
                                     staff => {
-                                        let coordinators : string[] = staff.filter(s => s.Type === 'Coordinator').map(s => s.Username);
-                                        let advisors : string [] = staff.filter(s => s.Type === 'Adviser').map(s => s.Username);
-                                        localStorage.setItem('coordinators', JSON.stringify(coordinators));
-                                        localStorage.setItem('advisors', JSON.stringify(advisors));
+                                        this.starsService.coordinators = staff.filter(s => s.Type === 'Coordinator').map(s => s.Username);
+                                        this.starsService.advisors = staff.filter(s => s.Type === 'Adviser').map(s => s.Username);
                                     }
                                 );
                                 setTimeout(() => {
@@ -87,15 +76,10 @@ export class LoginComponent {
                 );
 
             },
-            error => {console.log(error); this.isDeauthenticated = true},
+            error => {console.log(error); this.authenticateFailed = true},
             () => {
-
+                console.log("Getting STARS data done!")
             }
         );
-
-
     }
-
-
-
 }

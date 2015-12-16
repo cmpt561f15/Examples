@@ -10,76 +10,64 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var AuthenticationService_1 = require('../services/AuthenticationService');
-var DataService_1 = require("../services/DataService");
-var StarsService_1 = require('../services/StarsService');
+var stars_service_1 = require("../services/stars-service");
 var LoginComponent = (function () {
-    function LoginComponent(as, ds, ss, router) {
-        this.as = as;
-        this.ds = ds;
-        this.ss = ss;
+    function LoginComponent(starsService, router) {
+        this.starsService = starsService;
         this.router = router;
-        this.alert = true;
-        this.isDeauthenticated = false;
+        this.authenticateFailed = false;
     }
-    LoginComponent.prototype.onLogin = function () {
+    LoginComponent.prototype.onLogin = function (username, password) {
         var _this = this;
         var currentUser;
         var adviserPrograms;
-        this.as.login(this.username, this.password).subscribe(function (user) {
-            currentUser = user;
-            localStorage.setItem('currentUser', JSON.stringify(user));
+        this.starsService.login(username, password).subscribe(function (user) {
+            console.log("starsService.currentUser", _this.starsService.currentUser);
             var getStudentsObservable = (user.Type === "Faculty") ?
-                _this.ss.getStudentsByInstructor(user.StaffNo) :
-                _this.ss.getStudentsByProgram(user.Program);
+                _this.starsService.getStudentsByInstructor(user.StaffNo) :
+                _this.starsService.getStudentsByProgram(user.Program);
             getStudentsObservable.subscribe(function (results) {
                 //In case of faculty the method will return both students and courses
                 var students, instructorCourses;
-                if (currentUser.Type === "Faculty") {
-                    students = results[0], instructorCourses = results[1];
-                    console.log("Instructor Courses", instructorCourses);
-                    localStorage.setItem('courses', JSON.stringify(instructorCourses));
+                if (user.Type === "Faculty") {
+                    //[students, instructorCourses] = results;
+                    console.log("this.starsService.instructorCourses", _this.starsService.instructorCourses);
                 }
                 else {
-                    students = results[0], adviserPrograms = results[1];
+                    console.log("this.starsService.adviserPrograms", _this.starsService.adviserPrograms);
                 }
-                console.log("Students", students);
-                localStorage.setItem('students', JSON.stringify(students));
-                _this.ss.getActions(students).subscribe(function (actions) {
-                    console.log("Actions", actions);
-                    localStorage.setItem('actions', JSON.stringify(actions));
+                console.log("Students", _this.starsService.students);
+                _this.starsService.getActions(_this.starsService.students).subscribe(function (actions) {
+                    console.log("Actions", _this.starsService.actions);
                     //let actionTypes, staff, programs;
-                    _this.ss.getPrograms().subscribe(function (programs) {
-                        if (typeof adviserPrograms !== "undefined") {
-                            programs = programs.filter(function (p) { return adviserPrograms.indexOf(p.Code) >= 0; });
-                            localStorage.setItem('programs', JSON.stringify(programs));
+                    _this.starsService.getPrograms().subscribe(function (programs) {
+                        if (typeof _this.starsService.adviserPrograms !== "undefined") {
+                            _this.starsService.programs = programs.filter(function (p) { return _this.starsService.adviserPrograms.indexOf(p.Code) >= 0; });
                         }
                     });
-                    _this.ss.getActionTypes().subscribe(function (actionTypes) {
-                        localStorage.setItem('actionTypes', JSON.stringify(actionTypes));
+                    _this.starsService.getActionTypes().subscribe(function (actionTypes) {
+                        _this.starsService.actionTypes = actionTypes;
                     });
-                    _this.ss.getStaff().subscribe(function (staff) {
-                        var coordinators = staff.filter(function (s) { return s.Type === 'Coordinator'; }).map(function (s) { return s.Username; });
-                        var advisors = staff.filter(function (s) { return s.Type === 'Adviser'; }).map(function (s) { return s.Username; });
-                        localStorage.setItem('coordinators', JSON.stringify(coordinators));
-                        localStorage.setItem('advisors', JSON.stringify(advisors));
+                    _this.starsService.getStaff().subscribe(function (staff) {
+                        _this.starsService.coordinators = staff.filter(function (s) { return s.Type === 'Coordinator'; }).map(function (s) { return s.Username; });
+                        _this.starsService.advisors = staff.filter(function (s) { return s.Type === 'Adviser'; }).map(function (s) { return s.Username; });
                     });
                     setTimeout(function () {
                         _this.router.navigate(['/Students']);
                     }, 500);
                 });
             });
-        }, function (error) { console.log(error); _this.isDeauthenticated = true; }, function () {
+        }, function (error) { console.log(error); _this.authenticateFailed = true; }, function () {
+            console.log("Getting STARS data done!");
         });
     };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            providers: [AuthenticationService_1.default, DataService_1.default, StarsService_1.default],
             templateUrl: './app/components/login.html',
             directives: [common_1.CORE_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [AuthenticationService_1.default, DataService_1.default, StarsService_1.default, router_1.Router])
+        __metadata('design:paramtypes', [stars_service_1.default, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 })();

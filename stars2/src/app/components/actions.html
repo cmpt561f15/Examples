@@ -16,8 +16,8 @@
              (closeform)="onCloseForm()" (submitform)="onSubmitForm($event)" >
 </action-form>
 
-<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome {{ currentUser.Firstname  }}
-    {{ currentUser.Lastname }}
+<p class="text-right"><i class="fa fa-user">&nbsp;&nbsp;</i>Welcome {{ starsService.currentUser.Firstname  }}
+    {{ starsService.currentUser.Lastname }}
     (<a
             [routerLink]="['/Login']"
             (click)="onLogout()">Logout</a>)
@@ -40,7 +40,7 @@
         <label for="students">Students</label>
         <br><button (click)="prevStudent(student.value)" id="prev" type="button" class="navButton btn btn-info">Prev</button>
         <select #student [(ngModel)]="selectedStudent" id="students" (change)="selectStudent(student.value)" >
-            <option *ngFor="#student of students"
+            <option *ngFor="#student of starsService.students"
                     value="{{student.StudentId}}">{{student.StudentId}} - {{student.FirstName}} {{student.LastName}}</option>
         </select>
         <button (click)="nextStudent(student.value)" id="next" type="button" class="navButton btn btn-info">Next</button>

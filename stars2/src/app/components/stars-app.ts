@@ -19,8 +19,7 @@ import {DeleteActionComponent} from "./deleteAction";
 @Component({
     selector: 'stars-app',
     template: `<router-outlet></router-outlet>
-               <router-outlet name="deleteAction"></router-outlet>
-                `,
+               <router-outlet name="deleteAction"></router-outlet>`,
     directives: [ROUTER_DIRECTIVES]
 })
 

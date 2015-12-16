@@ -10,18 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var stars_service_1 = require('../services/stars-service');
 var actionForm_1 = require("./actionForm");
 var Utils_1 = require("../services/Utils");
 var StudentsComponent = (function () {
-    function StudentsComponent(router) {
+    function StudentsComponent(starsService, router) {
+        this.starsService = starsService;
         this.router = router;
-        this.currentUser = JSON.parse(localStorage.currentUser);
-        this.students = JSON.parse(localStorage.students);
-        this.actions = JSON.parse(localStorage.actions);
-        this.filteredStudents = this.students;
         this.checkedStudents = [];
-        this.isAdviser = (this.currentUser.Type === 'Adviser');
-        this.isFaculty = (this.currentUser.Type === "Faculty");
         this.openForm = false;
         this.editedAction = {
             "ActionId": '',
@@ -33,30 +29,27 @@ var StudentsComponent = (function () {
             "CourseCRN": '',
             "Students": ''
         };
-        if (this.currentUser.Type === 'Adviser') {
-            this.programs = JSON.parse(localStorage.programs);
-        }
-        else if (this.currentUser.Type === "Faculty") {
-            this.courses = JSON.parse(localStorage.courses);
-        }
+        this.isAdviser = (this.starsService.currentUser.Type === 'Adviser');
+        this.isFaculty = (this.starsService.currentUser.Type === "Faculty");
+        this.filteredStudents = starsService.students;
     }
     StudentsComponent.prototype.onLogout = function () {
         localStorage.clear();
     };
     StudentsComponent.prototype.filterByProgram = function (programDD) {
         if (programDD == "ALL") {
-            this.filteredStudents = this.students;
+            this.filteredStudents = this.starsService.students;
         }
         else {
-            this.filteredStudents = this.students.filter(function (s) { return s.Program == programDD; });
+            this.filteredStudents = this.starsService.students.filter(function (s) { return s.Program == programDD; });
         }
     };
     StudentsComponent.prototype.filterByCourse = function (courseDD) {
         if (courseDD == "ALL") {
-            this.filteredStudents = this.students;
+            this.filteredStudents = this.starsService.students;
         }
         else {
-            this.filteredStudents = this.students.filter(function (s) { return s.Courses.indexOf(parseInt(courseDD)) >= 0; });
+            this.filteredStudents = this.starsService.students.filter(function (s) { return s.Courses.indexOf(parseInt(courseDD)) >= 0; });
         }
     };
     StudentsComponent.prototype.selectCheckbox = function (event) {
@@ -77,29 +70,26 @@ var StudentsComponent = (function () {
         this.openForm = true;
         var tempAction;
         this.editActionMode = 'Add';
-        var ids = this.actions.map(function (a) { return a.ActionId; });
+        var ids = this.starsService.actions.map(function (a) { return a.ActionId; });
         var nextId = Math.max.apply(Math, ids) + 1;
         var courseCRN = '';
         if (this.isFaculty) {
-            var studentCourses = this.students.filter(function (s) { return (_this.checkedStudents.indexOf(s.StudentId)); })
+            var studentCourses = this.starsService.students.filter(function (s) { return (_this.checkedStudents.indexOf(s.StudentId)); })
                 .map(function (s) { return s.Courses; });
             courseCRN = studentCourses[0][0];
             console.log(courseCRN);
         }
         this.editedAction = {
             "ActionId": nextId,
-            "Date": Utils_1.default.formatDate(Utils_1.default.setTodayDate()),
+            "Date": Utils_1.default.formatDate(Utils_1.default.getTodayDate()),
             "ActionType": '',
             "Title": '',
             "Description": '',
-            "ByWhom": this.currentUser.Firstname,
+            "ByWhom": this.starsService.currentUser.Firstname,
             "CourseCRN": courseCRN,
             "Students": this.checkedStudents
         };
-        this.editedActionDate = Utils_1.default.setTodayDate();
-        //console.log(this.editedAction);
-        //console.log(this.editedAction);
-        // console.log(mode)
+        this.editedActionDate = Utils_1.default.getTodayDate();
     };
     StudentsComponent.prototype.onCloseForm = function () {
         this.openForm = false;
@@ -108,9 +98,9 @@ var StudentsComponent = (function () {
         this.openForm = false;
         console.log(event);
         if (event != "null") {
-            this.actions.push((event));
+            this.starsService.actions.push((event));
         }
-        localStorage.setItem('actions', JSON.stringify(this.actions));
+        localStorage.setItem('actions', JSON.stringify(this.starsService.actions));
     };
     StudentsComponent = __decorate([
         core_1.Component({
@@ -118,7 +108,7 @@ var StudentsComponent = (function () {
             templateUrl: './app/components/students.html',
             directives: [common_1.CORE_DIRECTIVES, router_1.ROUTER_DIRECTIVES, actionForm_1.actionFormComponent]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [stars_service_1.default, router_1.Router])
     ], StudentsComponent);
     return StudentsComponent;
 })();

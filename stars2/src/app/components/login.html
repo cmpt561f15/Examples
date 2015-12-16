@@ -2,7 +2,7 @@
     <div class="bs-callout bs-callout-info">
         <h3>STARS - Login</h3>
     </div>
-    <div class="alert alert-danger " style="display:block" *ngIf="isDeauthenticated" >
+    <div class="alert alert-danger " style="display:block" *ngIf="authenticateFailed" >
         <span>Invalid username and/or password</span>
     </div>
     <form >
@@ -10,25 +10,21 @@
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </span>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
-                   [(ngModel)]="username"
-            >
-            <div [hidden]="alert" class="alert alert-danger">
+            <input #username type="text" class="form-control" placeholder="Username" required>
+<!--            <div [hidden]="alert" class="alert alert-danger">
                 Username is required
-            </div>
+            </div>-->
         </div>
         <div><br/></div>
         <div class="input-group">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
             </span>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required
-                   [(ngModel)]="password"
-            >
+            <input type="password"  #password class="form-control" placeholder="Password" required>
         </div>
         <br>
         <div>
-            <input (click)=onLogin() id="login" class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+            <input (click)="onLogin(username.value, password.value)" class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
         </div>
     </form>
 </div>

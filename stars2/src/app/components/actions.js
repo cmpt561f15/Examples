@@ -10,20 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var stars_service_1 = require('../services/stars-service');
 var actionForm_1 = require("./actionForm");
 var Utils_1 = require('../services/Utils');
 var ActionsComponent = (function () {
-    function ActionsComponent(router, params) {
+    function ActionsComponent(starsService, router, params) {
         var _this = this;
+        this.starsService = starsService;
         this.router = router;
         this.params = params;
-        this.currentUser = JSON.parse(localStorage.currentUser);
-        this.isAdviser = (this.currentUser.Type === 'Adviser');
-        this.isFaculty = (this.currentUser.Type === "Faculty");
-        this.students = JSON.parse(localStorage.students);
-        this.actions = JSON.parse(localStorage.actions);
-        this.coordinators = JSON.parse(localStorage.coordinators);
-        this.advisors = JSON.parse(localStorage.advisors);
         this.DeleteActionCofirm = false;
         this.editedAction = {
             "ActionId": '',
@@ -36,14 +31,10 @@ var ActionsComponent = (function () {
             "Students": ''
         };
         this.openForm = false;
-        if (this.isAdviser) {
-            this.programs = JSON.parse(localStorage.programs);
-        }
-        else if (this.isFaculty) {
-            this.courses = JSON.parse(localStorage.courses);
-        }
+        this.isAdviser = (this.starsService.currentUser.Type === 'Adviser');
+        this.isFaculty = (this.starsService.currentUser.Type === "Faculty");
         this.currentStudentId = parseInt(params.get('id'));
-        this.filteredActions = this.actions.filter(function (a) {
+        this.filteredActions = this.starsService.actions.filter(function (a) {
             return a.Students.indexOf(_this.currentStudentId) >= 0;
         });
         this.selectedStudent = this.currentStudentId;
@@ -55,28 +46,28 @@ var ActionsComponent = (function () {
     };
     ActionsComponent.prototype.filterActionsBy = function (actionBy) {
         var _this = this;
-        this.filteredActions = this.actions.filter(function (a) {
+        this.filteredActions = this.starsService.actions.filter(function (a) {
             return a.Students.indexOf(_this.currentStudentId) >= 0;
         });
         switch (actionBy) {
             case 'me':
                 this.filteredActions = this.filteredActions.filter(function (a) {
-                    return a.ByWhom === _this.currentUser.Username;
+                    return a.ByWhom === _this.starsService.currentUser.Username;
                 });
                 break;
             case 'adviser':
                 this.filteredActions = this.filteredActions.filter(function (a) {
-                    return _this.advisors.indexOf(a.ByWhom) >= 0;
+                    return _this.starsService.advisors.indexOf(a.ByWhom) >= 0;
                 });
                 break;
             case 'coordinator':
                 this.filteredActions = this.filteredActions.filter(function (a) {
-                    return _this.coordinators.indexOf(a.ByWhom) >= 0;
+                    return _this.starsService.coordinators.indexOf(a.ByWhom) >= 0;
                 });
                 break;
             case 'faculty':
                 this.filteredActions = this.filteredActions.filter(function (a) {
-                    return _this.coordinators.indexOf(a.ByWhom) < 0 && _this.advisors.indexOf(a.ByWhom) < 0;
+                    return _this.starsService.coordinators.indexOf(a.ByWhom) < 0 && _this.starsService.advisors.indexOf(a.ByWhom) < 0;
                 });
                 break;
         }
@@ -87,24 +78,24 @@ var ActionsComponent = (function () {
         this.filterActionsBy('me');
     };
     ActionsComponent.prototype.nextStudent = function (studentId) {
-        var nextStuentIndex = (this.students.map(function (s) { return parseInt(s.StudentId); }).indexOf(parseInt(studentId))) + 1;
-        if (nextStuentIndex >= this.students.length) {
+        var nextStuentIndex = (this.starsService.students.map(function (s) { return parseInt(s.StudentId); }).indexOf(parseInt(studentId))) + 1;
+        if (nextStuentIndex >= this.starsService.students.length) {
             return;
         }
         else {
-            var nextStudetnId = this.students[nextStuentIndex].StudentId;
+            var nextStudetnId = this.starsService.students[nextStuentIndex].StudentId;
             this.currentStudentId = nextStudetnId;
             this.selectedStudent = nextStudetnId;
             this.selectStudent(nextStudetnId);
         }
     };
     ActionsComponent.prototype.prevStudent = function (studentId) {
-        var prevStuentIndex = (this.students.map(function (s) { return parseInt(s.StudentId); }).indexOf(parseInt(studentId))) - 1;
+        var prevStuentIndex = (this.starsService.students.map(function (s) { return parseInt(s.StudentId); }).indexOf(parseInt(studentId))) - 1;
         if (prevStuentIndex < 0) {
             return;
         }
         else {
-            var prevStudetnId = this.students[prevStuentIndex].StudentId;
+            var prevStudetnId = this.starsService.students[prevStuentIndex].StudentId;
             this.currentStudentId = prevStudetnId;
             this.selectedStudent = prevStudetnId;
             this.selectStudent(prevStudetnId);
@@ -119,9 +110,9 @@ var ActionsComponent = (function () {
     };
     ActionsComponent.prototype.onCofirm = function () {
         var _this = this;
+        //ToDo: improve delete actions
         this.filteredActions = this.filteredActions.filter(function (a) { return a.ActionId != _this.deletActionId; });
-        this.actions = this.actions.filter(function (a) { return a.ActionId != _this.deletActionId; });
-        localStorage.setItem('actions', JSON.stringify(this.actions));
+        this.starsService.deleteAction(this.deletActionId);
         this.onClose();
     };
     ActionsComponent.prototype.onClose = function () {
@@ -135,19 +126,20 @@ var ActionsComponent = (function () {
         switch (mode) {
             case "Edit":
                 event.preventDefault();
-                tempAction = this.actions.filter(function (a) { return a.ActionId == parseInt(actionId); })[0];
+                tempAction = this.starsService.actions.filter(function (a) { return a.ActionId == parseInt(actionId); })[0];
                 this.editedAction = tempAction;
                 this.editedActionDate = Utils_1.default.toDate(tempAction.Date);
                 console.log(this.editedActionDate);
                 break;
             case "Add":
-                var ids = this.actions.map(function (a) { return a.ActionId; });
+                //ToDo: improve this and simplify it
+                var ids = this.starsService.actions.map(function (a) { return a.ActionId; });
                 var nextId = Math.max.apply(Math, ids) + 1;
                 var courseCRN = '';
                 if (this.isFaculty) {
-                    var studentCourses = this.students.filter(function (s) { return _this.selectedStudent == s.StudentId; })
+                    var studentCourses = this.starsService.students.filter(function (s) { return _this.selectedStudent == s.StudentId; })
                         .map(function (s) { return s.Courses; });
-                    var instructorCourses = this.courses.filter(function (c) { return c.InstructorId == _this.currentUser.StaffNo; }).map(function (c) { return c.CRN; });
+                    var instructorCourses = this.starsService.instructorCourses; //this.courses.filter(c => c.InstructorId == this.starsService.currentUser.StaffNo).map(c => c.CRN);
                     studentCourses[0].forEach(function (c) {
                         if (instructorCourses.indexOf(parseInt(c)) >= 0) {
                             courseCRN = c;
@@ -156,20 +148,18 @@ var ActionsComponent = (function () {
                 }
                 this.editedAction = editedAction = {
                     "ActionId": nextId,
-                    "Date": Utils_1.default.formatDate(Utils_1.default.setTodayDate()),
+                    "Date": Utils_1.default.formatDate(Utils_1.default.getTodayDate()),
                     "ActionType": '',
                     "Title": '',
                     "Description": '',
-                    "ByWhom": this.currentUser.Firstname,
+                    "ByWhom": this.starsService.currentUser.Firstname,
                     "CourseCRN": courseCRN,
                     "Students": this.selectedStudent
                 };
-                this.editedActionDate = Utils_1.default.setTodayDate();
+                this.editedActionDate = Utils_1.default.getTodayDate();
                 //console.log(this.editedAction);
                 break;
         }
-        //console.log(this.editedAction);
-        // console.log(mode)
     };
     ActionsComponent.prototype.onCloseForm = function () {
         this.openForm = false;
@@ -178,10 +168,10 @@ var ActionsComponent = (function () {
         this.openForm = false;
         console.log(event);
         if (event != "null") {
-            this.actions.push((event));
+            this.starsService.actions.push((event));
             this.filteredActions.push((event));
         }
-        localStorage.setItem('actions', JSON.stringify(this.actions));
+        localStorage.setItem('actions', JSON.stringify(this.starsService.actions));
     };
     ActionsComponent.prototype.onTest = function () {
         //alert("hello");
@@ -194,7 +184,7 @@ var ActionsComponent = (function () {
             templateUrl: './app/components/actions.html',
             directives: [common_1.CORE_DIRECTIVES, router_1.ROUTER_DIRECTIVES, actionForm_1.actionFormComponent]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [stars_service_1.default, router_1.Router, router_1.RouteParams])
     ], ActionsComponent);
     return ActionsComponent;
 })();

@@ -10,6 +10,7 @@
   },
   "files": [
     "app/bootstrap.ts",
-    "app/components/stars-app.ts"
+    "app/components/stars-app.ts",
+    "app/services/stars-service.ts"
   ]
 }
