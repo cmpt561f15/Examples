@@ -1,0 +1,62 @@
+<action-editor #actionEditor></action-editor>
+
+<h1>Students at risk</h1>
+
+<div  *ngIf="starsService.programs && starsService.currentUser.Type === 'Adviser'">
+    <label for="programsDD" class="control-label">Program</label>
+    <select #selectedProgram id="programsDD" (change)="onParamChanged(selectedProgram.value, 'All')">
+        <option selected="selected" value="All"> All </option>
+        <option *ngFor="#program of starsService.programs" value="{{program.Code}}">{{program.Name}}({{program.Code}})</option>
+    </select>
+</div>
+<div  *ngIf="starsService.instructorCourses && starsService.currentUser.Type === 'Faculty'">
+    <label for="coursesDD" class="control-label">Course</label>
+    <select #selectedCourse id="coursesDD" (change)="onParamChanged('All', selectedCourse.value)">
+        <option selected="selected" value="All"> All </option>
+        <option *ngFor="#course of starsService.instructorCourses" value="{{course.CRN}}">{{course.CRN}} {{course.CourseName}}</option>
+    </select>
+</div>
+
+<div class="table-responsive" *ngIf="starsService.students">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#actionEditor" id="addAction"
+            (click)="actionEditor.add(selectedStudents)" [disabled]="selectedStudents.length == 0">
+        <i class="fa fa-plus"></i> Add Action
+    </button>
+    <br><br>
+
+    <table id="studentsTable" class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+        <tr >
+            <th></th>
+            <th>Student Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Program</th>
+            <th>GPA</th>
+            <th>Risk Category</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="#student of filteredStudents">
+            <!-- unfortunately filter pipes do not work with the angular 2 beta 0
+                | filterByField:'Program':selectedProgram | filterInArray:'Courses':selectedCourse"
+             -->
+            <td><input (change)="selectCheckbox($event)"  type="checkbox" value="{{student.StudentId}}"></td>
+            <td>{{student.StudentId}}</td>
+            <td>{{student.FirstName}}</td>
+            <td>{{student.LastName}}</td>
+            <td>{{student.Gender}}</td>
+            <td>{{student.Program}}</td>
+            <td>{{student.GPA}}</td>
+            <td>{{student.AtRiskCategory}} </td>
+            <td>{{student.Courses}}</td>
+            <td><a [routerLink]="['/Actions', {id:student.StudentId}]"> actions </a></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+</div>
+<div id="actionForm"></div>
