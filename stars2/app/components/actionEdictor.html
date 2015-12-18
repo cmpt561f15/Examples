@@ -9,38 +9,43 @@
                 <h3 class="modal-title" id="formLabel">Action Details</h3>
             </div>
             <div class="modal-body">
-                <form class="wider">
+                <form #actionForm="ngForm">
                     <div *ngIf="starsService.currentUser.Type === 'Faculty'" class="form-group form-group-condensed">
-                         <label for="courses" class="control-label">Course</label>
-                         <select [(ngModel)]="action.CourseCRN" id="courses" class="form-control">
+                         <label for="courseCRN" class="control-label">Course</label>
+                         <select [(ngModel)]="action.CourseCRN" ngControl="courseCRN" id="courseCRN" class="form-control" required>
                              <option *ngFor="#course of starsService.instructorCourses" value="{{course.CRN}}">{{course.CourseCode + ' ' + course.CourseName}}</option>
                          </select>
                     </div>
                     <div class="form-group form-group-condensed">
-                        <label for="action" class="control-label">Action Type</label>
-                        <select [(ngModel)]="action.ActionType" id="action" class="form-control" required>
+                        <label for="actionType" class="control-label">Action Type</label>
+                        <select [(ngModel)]="action.ActionType" ngControl="actionType" id="actionType" class="form-control" required>
                             <option *ngFor="#actionType of starsService.actionTypes" value="{{actionType}}">{{actionType}}</option>
                         </select>
                     </div>
                     <div class="form-group form-group-condensed">
-                        <label for="date" class="control-label">Date</label>
-                        <input [(ngModel)]="action.Date" type="date" class="form-control" id="date" placeholder="Date" required/>
+                        <label for="actionDate" class="control-label">Date</label>
+                        <input [(ngModel)]="action.Date" ngControl="actionDate" id="actionDate"
+                               type="date" class="form-control" id="date" placeholder="Date" required/>
                     </div>
                     <div class="form-group form-group-condensed">
-                        <label for="title" class="control-label">Title</label>
-                        <input [(ngModel)]="action.Title" type="text" class="form-control" id="title" placeholder="Title" required/>
+                        <label for="actionTitle" class="control-label">Title</label>
+                        <input [(ngModel)]="action.Title" ngControl="actionTitle" id="actionTitle"
+                               type="text" class="form-control" id="title" placeholder="Title" required/>
                     </div>
                     <div class="form-group form-group-condensed">
-                        <label for="description" class="control-label">Description</label>
-                        <textarea [(ngModel)]="action.Description" class="form-control" id="description" placeholder="Description" required></textarea>
+                        <label for="actionDescription" class="control-label">Description</label>
+                        <textarea [(ngModel)]="action.Description" ngControl="actionDescription" id="actionDescription"
+                                class="form-control" id="description" placeholder="Description" required></textarea>
                     </div>
                     <br/>
-
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="submit" type="button" class="btn btn-primary" (click)="onFormSubmit()" data-dismiss="modal">Submit</button>
+                <button [disabled]="!actionForm.form.valid" (click)="onFormSubmit()"
+                        id="submit" type="button" class="btn btn-primary"
+                        data-dismiss="modal">Submit
+                </button>
             </div>
         </div>
     </div>
