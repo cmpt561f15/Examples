@@ -10,6 +10,36 @@
 <div class="container">
         <h1>Rubric Editor</h1>
 
+    <div>
+        <form >
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" class="form-control" value="Rubric1">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea class="form-control" rows="3">Advanced website design rubric</textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Category</label>
+                <select>
+                    <option>Design Document</option>
+                    <option>Programming</option>
+                    <option>Website design</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Keywords</label>
+                <div>
+                    <input type="text" name="cities" class="form-control" value="Web design" />
+                </div>
+            </div>
+        </form>
+    </div>
+
         <div id="dangerAlert" class="alert alert-danger alert-dismissable" role="alert" style="display:none">
             <button id="closeAlert" class="close" aria-label="Close" data-hide="alert"><span aria-hidden="true">&times;</span></button>
             <p id="errorMessage">You cannot delete this criterion</p>

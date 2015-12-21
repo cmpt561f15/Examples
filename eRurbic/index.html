@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Anwar Alsardy">
+
+    <title>eRubric</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <span class="navbar-brand" href="#">eRubric</span>
+        <ul class="nav nav-pills">
+            <li id="searchRubric"><a href="index.html?op=searchRubric"><span class="glyphicon glyphicon-saved"></span>&nbsp;Rubrics</a></li>
+            <li id="grading"><a href="index.html?op=grading"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Grading</a></li>
+            <li id="logout"><a href="login.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+
+            <li id="viewGrading"><a href="index.html?op=viewGrading"><span class="glyphicon glyphicon-education"></span>&nbsp;Students View (for testing only)</a></li>
+        </ul>
+    </div>
+
+    <div class="content" id="content"></div>
+ </div>
+</body>
+</html>

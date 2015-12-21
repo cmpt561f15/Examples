@@ -1,0 +1,146 @@
+<ul class="nav nav-pills">
+    <li id="addRubric"><a href="index.html?op=rubricEditor">Add Rubric</a></li>
+</ul>
+
+<br>
+
+<label>Filter Rubrics</label>
+<div class="input-group">
+    <div class="input-group-btn">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul id="catetory" class="dropdown-menu">
+            <li><a href="#">Design document</a></li>
+            <li><a href="#">Web App Design</a></li>
+            <li><a href="#">Review Paper</a></li>
+        </ul>
+    </div>
+    <input type="Text" ID="datebox1" Class="form-control " placeholder="Select Category" readonly>
+</div>
+<br>
+
+<div class="arb hidden">
+
+    <div class="col-md-7">
+        <form>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" class="form-control" placeholder="Rubric Title">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Rubric Description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Subject</label>
+                <textarea class="form-control" rows="3" placeholder="Rubric Subject"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Category</label>
+                <textarea class="form-control" rows="3" placeholder="Rubric Category"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Keywords</label>
+                <div>
+                    <input type="text" name="cities" class="form-control"
+                           value="Test" data-role="tagsinput"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="tableholder" class="col-md-12">
+        <div class="addcolumn">
+            <button type="button" class="btn btn-success btn-circle"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
+        <div style="clear: both"></div>
+
+        <div class="table-responsive">
+        <span class="rubrictable">
+            <table id="rubrictable" class="table table-striped table-hover">
+                <tr>
+                    <th>
+                        <button type="button" style="float: left" class="addrow btn btn-success btn-circle"><i
+                                class="glyphicon glyphicon-plus"></i></button>
+                    </th>
+                    <th class="text-center" data-level-id="0">
+                        <button type="button" class="removecolumn btn btn-danger btn-circle"><i
+                                class="glyphicon glyphicon-minus"></i></button>
+
+                        <span contenteditable>Level</span>
+
+                        <div class="ranges">
+                            <span contenteditable type="text" class="min text-right">0.9</span>
+                            <span contenteditable class="default">0.95</span>
+                            <span contenteditable type="text" class="max">1.0</span>
+                        </div>
+
+                </tr>
+                <tr>
+                    <th>
+                        <button style="float: none" type="button" class="removerow btn btn-danger btn-circle"><i
+                                class="glyphicon glyphicon-minus"></i></button>
+                        <span contenteditable>Criteria</span>
+                        <div>%<input type="text" value="100" class="per"/></div>
+                    </th>
+                    <td data-level-id="0" contenteditable>Write your Description Here</td>
+
+                </tr>
+            </table>
+            </span>
+        </div>
+
+        <a type="submit" class="submit btn btn-default" href="index.html?op=rubric">Submit</a>
+    </div>
+</div>
+
+<div class="rb">
+    <div class="col-md-12 ">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Subject</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Rubric1</td>
+                <td>Homework#1</td>
+                <td>CS</td>
+                <td>Web Development</td>
+                <td><a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right"
+                       href="index.html?op=rubricEditor" role="button">Update</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Rubric2</td>
+                <td>Homework#2</td>
+                <td>CS</td>
+                <td>Web Development</td>
+                <td><a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right"
+                       href="index.html?op=rubricEditor" role="button">Update</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Rubric3</td>
+                <td>Homework#3</td>
+                <td>CS</td>
+                <td>Web Development</td>
+                <td><a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right"
+                       href="index.html?op=rubricEditor" role="button">Update</a></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<script src="js/gradingtasks.js"></script>
+<link rel="stylesheet" href="css/gradingtasks.css">
+
+<div class="agt">
+    <br>
+    <div class="col-md-8  ">
+        <label>Course</label>
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul id="clist" class="dropdown-menu">
+                    <li class="cname"><a href="#">Course 1</a></li>
+                    <li class="cname"><a href="#">Course 2</a></li>
+                    <li class="cname"><a href="#">Course 3</a></li>
+                </ul>
+            </div>
+            <input type="Text" ID="datebox1" Class="form-control " placeholder="Select Course" readonly>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label>Title</label>
+            <input id="agttitle" type="text" class="form-control" placeholder="Title">
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id="agtdes" class="form-control" rows="3" placeholder="Description"></textarea>
+        </div>
+
+        <label>Rubric</label>
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul id="rilist" class="dropdown-menu">
+                    <li class="ri"><a href="#">Rubric 1</a></li>
+                    <li class="ri"><a href="#">Rubric 2</a></li>
+                    <li class="ri"><a href="#">Rubric 3</a></li>
+                </ul>
+            </div>
+            <input type="Text" ID="datebox3" Class="form-control " placeholder="Select Rubric " readonly>
+        </div>
+        <br>
+        <label>Type</label>
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul id="gilist" class="dropdown-menu">
+                    <li class="gi"><a href="#">Group</a></li>
+                    <li class="gi"><a href="#">Individual</a></li>
+                </ul>
+            </div>
+            <input type="Text" ID="datebox2" Class="form-control " placeholder="Select Group or Individual " readonly>
+        </div>
+        <br>
+        <div class="panel panel-primary panel1 hidden">
+            <div class="panel-heading">Group Setup</div>
+            <div class="panel-body">
+                <p>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 1 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 2 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 3 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 4 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 5 </strong></a>
+                </p>
+                <p>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 6 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 7 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 8 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 9 </strong></a>
+                    <a class="btn btn-info btn-sm ds"> <strong>Student 10</strong></a>
+                </p>
+                <hr class="hr1">
+                    <span class="glyphicon glyphicon-plus " aria-hidden="true" data-toggle="tooltip"
+                          data-placement="right" title="Add Group"></span>
+                <br>
+                <div class="row groups">
+                    <div class="col-md-3 text-center sgroup g1">
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <label>Group 1</label>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <h4 class="hidden" id="fa"><span class="label label-danger"><span class="glyphicon glyphicon-exclamation-sign"
+                                                                          aria-hidden="true"></span> Please fill all fields</span>
+        </h4>
+        <h4 class="hidden" id="fa1"><span class="label label-danger"><span class="glyphicon glyphicon-exclamation-sign"
+                                                                           aria-hidden="true"></span> Please remove all students from the Group</span>
+        </h4>
+        <h4 class="hidden" id="fa2"><span class="label label-danger"><span class="glyphicon glyphicon-exclamation-sign"
+                                                                           aria-hidden="true"></span> at least one Student is NOT associated with a group</span>
+        </h4>
+        <button id="agtsave" class="btn btn-primary  pull-right " type="submit">Save</button>
+        <br>
+        <br>
+
+    </div>
+</div>

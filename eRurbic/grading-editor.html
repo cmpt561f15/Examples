@@ -1,0 +1,527 @@
+<script src="js/gradingtasks.js"></script>
+<link rel="stylesheet" href="css/gradingtasks.css">
+
+
+<br>
+<br>
+<div class="row row-eq-height">
+    <div class="col-md-3">
+        <nav>
+            <ul class="pager pager1">
+                <li class="previous"><a href="#">Previous Student</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-6 ">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul id="slist" class="dropdown-menu">
+                    <li class="sname"><a href="#">Student 1</a></li>
+                    <li class="sname"><a href="#">Student 2</a></li>
+                    <li class="sname"><a href="#">Student 3</a></li>
+                </ul>
+            </div>
+            <input type="Text" ID="datebox" Class="form-control " placeholder="Select Student" readonly>
+        </div>
+
+    </div>
+    <div class="col-md-3 ">
+        <nav>
+            <ul class="pager pager1">
+                <li class="next"><a href="#">Next Student</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+<br>
+
+<div class="row row-eq-height ">
+    <div class="col-md-12">
+        <div class="panel panel-primary not-hidden s1 ">
+            <div class="panel-heading">
+                <h5 class="panel-title text-center">Student 1</h5>
+            </div>
+            <div class="panel-body text-center">
+                <br>
+                <table class="table table-bordered table-condensed">
+
+                    <tr>
+                        <td></td>
+                        <td class="bold-blu_bg">Level 1</td>
+                        <td class="bold-blu_bg">Level 2</td>
+                        <td class="bold-blu_bg" >Level 3</td>
+                        <td class="bold-blu_bg">Level 4</td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 1 (25%)</td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg" >Criteria 2 (25%)</td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show ">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell se">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 3 (25%)</td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 4 (25%)</td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="panel-footer">
+                <strong>Score:<span  class="score">100</span>% </strong>
+                <br>
+                <strong>Comment:</strong>
+                <textarea class="form-control" rows="3" > Excelent Work </textarea>
+            </div>
+        </div>
+
+        <div class="panel panel-primary hidden s2 ">
+            <div class="panel-heading">
+                <h5 class="panel-title text-center">Student 2</h5>
+            </div>
+            <div class="panel-body text-center">
+                <br>
+                <table class="table table-bordered table-condensed">
+
+                    <tr>
+                        <td></td>
+                        <td class="bold-blu_bg">Level 1</td>
+                        <td class="bold-blu_bg">Level 2</td>
+                        <td class="bold-blu_bg" >Level 3</td>
+                        <td class="bold-blu_bg">Level 4</td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 1 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg" >Criteria 2 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 3 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 4 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="panel-footer">
+                <strong>Score:<span  class="score">80</span> % </strong>
+                <br>
+                <strong>Comment:</strong>
+                <textarea class="form-control" rows="3" > Very good Work</textarea>
+            </div>
+        </div>
+
+        <div class="panel panel-primary hidden s3 ">
+            <div class="panel-heading">
+                <h5 class="panel-title text-center">Student 3</h5>
+            </div>
+            <div class="panel-body text-center">
+                <br>
+                <table class="table table-bordered table-condensed">
+
+                    <tr>
+                        <td></td>
+                        <td class="bold-blu_bg">Level 1</td>
+                        <td class="bold-blu_bg">Level 2</td>
+                        <td class="bold-blu_bg" >Level 3</td>
+                        <td class="bold-blu_bg">Level 4</td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 1 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg" >Criteria 2 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 3 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold-blu_bg">Criteria 4 (25%)</td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".90" max="1.00" value="1" step=".01"  />
+                                <br>
+                                <span >1</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".7" max=".8" value=".8" step=".01"  />
+                                <br>
+                                <span >.8</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell selected_cell">
+                            <div class="show">
+                                <input class="rangein" type="range" min=".5" max=".6" value=".6" step=".01"  />
+                                <br>
+                                <span >.6</span>
+                            </div>
+                        </td>
+                        <td class="rubric_cell">
+                            <div class="hidden">
+                                <input class="rangein" type="range" min=".0" max=".4" value=".5" step=".01"  />
+                                <br>
+                                <span >.4</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="panel-footer">
+                <strong>Score:<span  class="score">60</span> % </strong>
+                <br>
+                <strong>Comment:</strong>
+                <textarea class="form-control" rows="3" >Acceptable work </textarea>
+            </div>
+        </div>
+
+    </div>
+</div>
+
