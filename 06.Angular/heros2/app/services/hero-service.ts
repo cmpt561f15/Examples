@@ -1,6 +1,7 @@
-import {Injectable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import Observable from '@reactivex/rxjs/dist/cjs/Observable'
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import { Hero } from '../models/hero';
 import {Quote} from "../models/quote";
 
@@ -18,7 +19,7 @@ export class HeroService {
          new Hero(4, 'Uthman Ibn Affan', 'Companion'),
          new Hero(5, 'Ali ibn Abi Talib', 'Companion')
          ];*/
-        this.baseUrl = 'src/app/data/';
+        this.baseUrl = '/app/data/';
     }
 
     fetchHeros() : Observable<Hero[]> {

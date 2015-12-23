@@ -2,24 +2,29 @@
 <head>
     <title>Heros</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- ES6-related imports -->
-    <script src="/node_modules/systemjs/dist/system.js"></script>
+    <!-- 1. Load libraries -->
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.js"></script>
+    <script src="node_modules/angular2/bundles/http.js"></script>
 
+    <!-- 2. Configure SystemJS -->
     <script>
-        //configure system loader
-        System.config({defaultJSExtensions: true});
-    </script>
-
-    <script src="/node_modules/angular2/bundles/angular2.min.js"></script>
-    <script src="/node_modules/angular2/bundles/http.min.js"></script>
-    <script src="/node_modules/angular2/bundles/router.min.js"></script>
-    <script>
-        //bootstrap the Angular2 application
-        System.import('/src/app/bootstrap').catch(console.log.bind(console));
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/bootstrap')
+                .then(null, console.error.bind(console));
     </script>
 </head>
 <body>

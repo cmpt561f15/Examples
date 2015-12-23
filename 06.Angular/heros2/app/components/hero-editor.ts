@@ -1,11 +1,12 @@
-import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from 'angular2/router';
 import { Hero } from '../models/hero';
 import {HeroService} from "../services/hero-service";
 
 @Component({
     selector: 'hero-form',
-    templateUrl: 'src/app/components/hero-form.html',
+    templateUrl: 'app/components/hero-form.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class HeroEditor {

@@ -1,4 +1,5 @@
-import {Component, Observable, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {Hero} from '../models/hero'
 import {Quote} from '../models/quote'
@@ -11,9 +12,9 @@ import {HeroService} from "../services/hero-service";
        <a href (click)="add()" class="btn btn-info">
             <i class="fa fa-plus"></i> Add
        </a>
-       <div *ng-if="heroService.heroes">
+       <div *ngIf="heroService.heroes">
           <table>
-            <tr *ng-for="#hero of heroService.heroes">
+            <tr *ngFor="#hero of heroService.heroes">
                 <td>
                   {{ hero.name }}
                 </td>
@@ -21,7 +22,7 @@ import {HeroService} from "../services/hero-service";
                     <a href (click)="select(hero)" class="btn btn-info">
                         <i class="fa fa-caret-square-o-down"></i> Show
                     </a>
-                    <a href [router-link]="['/Edit', {id: hero.id}]" class="btn btn-info">
+                    <a href [routerLink]="['/Edit', {id: hero.id}]" class="btn btn-info">
                         <i class="fa fa-pencil-square-o"></i> Edit
                     </a>
                     <a href (click)="remove(hero)" class="btn btn-info">

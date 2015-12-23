@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 *ngIf="hero.id > 0">Edit Hero details - {{hero.name}}</h1>
+    <h1 *ngIf="hero.id === 0">Add Hero - {{hero.name}}</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name"
+                   #name="ngForm"
+                   [(ngModel)]="hero.name"
+                   ngControl="name" required>
+            <div class="alert alert-danger" [hidden]="name.valid">
+                Name is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="quote">Quote</label>
+            <input type="text" class="form-control" id="quote"
+                   #quote="ngForm"
+                   [(ngModel)]="hero.quote"
+                   ngControl="quote" required>
+            <div class="alert alert-danger" [hidden]="quote.valid">
+                Quote is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="heroType">Hero Type</label>
+            <select class="form-control" id="heroType"
+                    #heroType="ngForm"
+                    [(ngModel)]="hero.heroType"
+                    ngControl="heroType" required>
+                <option *ngFor="#ht of heroTypes" [value]="ht">{{ht}}</option>
+            </select>
+            <div class="alert alert-danger" [hidden]="heroType.valid">
+                Hero Type is required
+            </div>
+        </div>
+
+        <button [disabled]="!heroForm.form.valid" type="submit" class="btn btn-primary">
+            Submit
+        </button>
+
+    </form>
+</div>

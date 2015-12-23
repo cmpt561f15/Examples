@@ -1,11 +1,12 @@
-import {bootstrap, provide} from 'angular2/angular2';
+import {provide} from 'angular2/core';
+import { bootstrap } from 'angular2/platform/browser';
 //First we import all router-related directives and classes from ‘angular2/router’.
 import {
     ROUTER_PROVIDERS,
     LocationStrategy,
     HashLocationStrategy
 } from 'angular2/router';
-import {HTTP_BINDINGS} from 'angular2/http';
+import {HTTP_PROVIDERS} from 'angular2/http';
 import {HeroApp} from './components/hero-app'
 import {HeroService} from "./services/hero-service";
 
@@ -25,7 +26,7 @@ import {HeroService} from "./services/hero-service";
 bootstrap(HeroApp,
     [
         HeroService,
-        ROUTER_PROVIDERS, HTTP_BINDINGS,
+        ROUTER_PROVIDERS, HTTP_PROVIDERS,
         provide(LocationStrategy, {useClass: HashLocationStrategy})
     ]
 );

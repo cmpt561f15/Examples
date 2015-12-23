@@ -1,7 +1,7 @@
 import {
-    Component, Input,
-    CORE_DIRECTIVES
-} from 'angular2/angular2';
+    Component, Input
+} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 
 import {Hero} from '../models/hero'
 
@@ -20,7 +20,7 @@ import {Hero} from '../models/hero'
                 color: #555;
             }
         </style>
-        <div *ng-if="hero">
+        <div *ngIf="hero">
             <h2>Hero details:</h2>
             <table class="table table-striped"  id="hero-show">
                 <tbody>
