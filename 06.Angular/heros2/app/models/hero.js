@@ -16,3 +16,4 @@ System.register([], function(exports_1) {
         }
     }
 });
+//# sourceMappingURL=hero.js.map

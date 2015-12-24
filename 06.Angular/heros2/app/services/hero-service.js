@@ -90,3 +90,4 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "ang
         }
     }
 });
+//# sourceMappingURL=hero-service.js.map

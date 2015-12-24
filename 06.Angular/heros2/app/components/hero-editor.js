@@ -66,3 +66,4 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../mode
         }
     }
 });
+//# sourceMappingURL=hero-editor.js.map

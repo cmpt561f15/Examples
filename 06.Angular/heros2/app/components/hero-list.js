@@ -74,3 +74,4 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './hero-
         }
     }
 });
+//# sourceMappingURL=hero-list.js.map
