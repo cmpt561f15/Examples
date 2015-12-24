@@ -43,4 +43,3 @@ System.register(['angular2/core', 'angular2/common', '../models/hero'], function
         }
     }
 });
-//# sourceMappingURL=hero-show.js.map

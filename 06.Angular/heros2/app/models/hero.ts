@@ -1,6 +1,6 @@
 export class Hero {
     constructor(
-        public id: number,
+        public _id: string,
         public name: string,
         public heroType: string,
         public quote?: string

@@ -2,7 +2,6 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {Hero} from '../models/hero'
-import {Quote} from '../models/quote'
 import {HeroViewer} from './hero-show'
 import {HeroService} from "../services/hero-service";
 
@@ -22,7 +21,7 @@ import {HeroService} from "../services/hero-service";
                     <a href (click)="select(hero)" class="btn btn-info">
                         <i class="fa fa-caret-square-o-down"></i> Show
                     </a>
-                    <a href [routerLink]="['/Edit', {id: hero.id}]" class="btn btn-info">
+                    <a href [routerLink]="['/Edit', {id: hero._id}]" class="btn btn-info">
                         <i class="fa fa-pencil-square-o"></i> Edit
                     </a>
                     <a href (click)="remove(hero)" class="btn btn-info">
@@ -31,7 +30,7 @@ import {HeroService} from "../services/hero-service";
                 </td>
           </tr>
           </table>
-          <h2>Selected hero: {{heroService.selectedHero.name}}</h2>
+          <h2>Selected hero: {{heroService.selectedHero?.name}}</h2>
           <hero-show [hero]="heroService.selectedHero"></hero-show>
         </div>
         `,
@@ -48,23 +47,14 @@ export class HeroList {
         if (!this.heroService.heroes) {
             //After getting the heros -> get their quotes
             //This is a demo of two async calls done in sequence
-            this.heroService.fetchHeros().subscribe((heroes:Hero[]) => {
-                this.heroService.fetchQuotes().subscribe(
-                    (quotes:Quote[]) => {
-                        console.log('Quotes', quotes);
-
-                        for (let quote of quotes) {
-                            let indx = heroes.findIndex(h => h.id === quote.heroId);
-                            heroes[indx].quote = quote.quote;
-                        }
-                        console.log('Heroes', heroes);
+            this.heroService.fetchHeros().subscribe(
+                    (heroes:Hero[]) => {
                         this.heroService.heroes = heroes;
                         this.heroService.selectedHero = heroes[0];
                     },
                     (err) => console.error('There was an error: ' + err),
                     () => console.log('Completed!')
                 );
-            });
         }
     }
 

@@ -1,7 +1,8 @@
 var gulp = require('gulp');
+var nodemon = require('gulp-nodemon');
 
 var PATHS = {
-    src: 'src/app/**/*.ts'
+    src: 'app/**/*.ts'
 };
 
 /*gulp.task('clean', function (done) {
@@ -27,19 +28,15 @@ gulp.task('ts2js', function () {
 });
 
 gulp.task('run', ['ts2js'], function () {
-    var http = require('http');
-    var connect = require('connect');
-    var serveStatic = require('serve-static');
-    var open = require('open');
-
-    var port = 8090, app;
-
+    //watch changes to ts files
     gulp.watch(PATHS.src, ['ts2js']);
 
-    app = connect().use(serveStatic(__dirname));
-    http.createServer(app).listen(port, function () {
-        open('http://localhost:' + port);
-    });
+    nodemon({
+        script: 'app.js'
+        , ext: 'js html'
+    }).on('restart', function () {
+        console.log('restarted!')
+    })
 });
 
 // The default task (called when you run `gulp` from cli)

@@ -42,4 +42,3 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router'
         }
     }
 });
-//# sourceMappingURL=bootstrap.js.map

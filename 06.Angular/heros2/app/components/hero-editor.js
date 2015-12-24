@@ -40,12 +40,15 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../mode
                     }
                     else {
                         console.log('Entered HeroEditor add mode');
-                        this.hero = new hero_1.Hero(0, '', '');
+                        this.hero = new hero_1.Hero('', '', '');
                     }
                 }
                 HeroEditor.prototype.onSubmit = function () {
-                    if (this.hero.id === 0) {
+                    if (this.hero._id === '') {
                         this.heroService.add(this.hero);
+                    }
+                    else {
+                        this.heroService.update(this.hero);
                     }
                     this.router.navigate(['/Home']);
                 };
@@ -63,4 +66,3 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '../mode
         }
     }
 });
-//# sourceMappingURL=hero-editor.js.map

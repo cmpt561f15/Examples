@@ -3,7 +3,7 @@ import {Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Hero } from '../models/hero';
-import {Quote} from "../models/quote";
+import {Headers} from "angular2/http";
 
 @Injectable()
 export class HeroService {
@@ -19,31 +19,64 @@ export class HeroService {
          new Hero(4, 'Uthman Ibn Affan', 'Companion'),
          new Hero(5, 'Ali ibn Abi Talib', 'Companion')
          ];*/
-        this.baseUrl = '/app/data/';
+        this.baseUrl = 'http://localhost:9080/api/heros';
     }
 
     fetchHeros() : Observable<Hero[]> {
-         return this.http.get(`${this.baseUrl}heros.json`).map(response => response.json());
-    }
-
-    fetchQuotes() : Observable<Hero[]> {
-        return this.http.get(`${this.baseUrl}quotes.json`)
-                    .map(response => response.json())
+         return this.http.get(this.baseUrl).map(response => response.json());
     }
 
     find(id: string): Hero {
-        return this.heroes.filter(c => c.id == id)[0];
+        return this.heroes.filter(c => c._id == id)[0];
     }
 
     remove(hero: Hero) {
-        let index = this.heroes.indexOf(hero);
-        this.heroes.splice(index, 1);
+        console.log("Hero to be deleted", JSON.stringify(hero));
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        this.http.delete(`${this.baseUrl}/${hero._id}`)
+          .subscribe(
+                (response: Response) => {
+                    console.log('Delete done sucessfully');
+                    let index = this.heroes.indexOf(hero);
+                    this.heroes.splice(index, 1);
+                    if (this.heroes.length > 0) {
+                        this.selectedHero = this.heroes[0];
+                    }
+                });
+    }
+
+    update(hero: Hero) {
+        console.log("Hero to be updated", JSON.stringify(hero));
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        this.http.put(`${this.baseUrl}/${hero._id}`,
+            JSON.stringify(hero),
+            {headers:headers})
+            .map((res: Response) => res.json())
+            .subscribe(
+                (updatedHero:Hero) => {
+                    console.log("updatedHero", updatedHero);
+                });
     }
 
     add(hero:Hero) {
-        hero.id = this.heroes[this.heroes.length -1].id + 1;
-        this.heroes.push(hero);
-        this.selectedHero = hero;
-        console.log(hero);
+        delete hero._id;
+        console.log("Hero to add", JSON.stringify(hero));
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        this.http.post(this.baseUrl,
+            JSON.stringify(hero),
+            {headers:headers})
+            .map((res: Response) => res.json())
+            .subscribe(
+                (addedHero:Hero) => {
+                    this.heroes.push(addedHero);
+                    this.selectedHero = addedHero;
+                    console.log("addedHero", addedHero);
+            });
     }
 }

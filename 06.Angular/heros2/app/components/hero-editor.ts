@@ -20,13 +20,15 @@ export class HeroEditor {
             this.heroService.selectedHero = this.hero;
         } else {
             console.log('Entered HeroEditor add mode');
-            this.hero = new Hero(0, '', '');
+            this.hero = new Hero('', '', '');
         }
     }
 
     onSubmit() {
-        if (this.hero.id === 0) {
+        if (this.hero._id === '') {
             this.heroService.add(this.hero);
+        } else {
+            this.heroService.update(this.hero);
         }
         this.router.navigate(['/Home']);
     }

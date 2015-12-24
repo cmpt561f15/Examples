@@ -4,8 +4,8 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             Hero = (function () {
-                function Hero(id, name, heroType, quote) {
-                    this.id = id;
+                function Hero(_id, name, heroType, quote) {
+                    this._id = _id;
                     this.name = name;
                     this.heroType = heroType;
                     this.quote = quote;
@@ -16,4 +16,3 @@ System.register([], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=hero.js.map

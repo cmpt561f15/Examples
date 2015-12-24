@@ -41,18 +41,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './hero-
                         //After getting the heros -> get their quotes
                         //This is a demo of two async calls done in sequence
                         this.heroService.fetchHeros().subscribe(function (heroes) {
-                            _this.heroService.fetchQuotes().subscribe(function (quotes) {
-                                console.log('Quotes', quotes);
-                                for (var _i = 0; _i < quotes.length; _i++) {
-                                    var quote = quotes[_i];
-                                    var indx = heroes.findIndex(function (h) { return h.id === quote.heroId; });
-                                    heroes[indx].quote = quote.quote;
-                                }
-                                console.log('Heroes', heroes);
-                                _this.heroService.heroes = heroes;
-                                _this.heroService.selectedHero = heroes[0];
-                            }, function (err) { return console.error('There was an error: ' + err); }, function () { return console.log('Completed!'); });
-                        });
+                            _this.heroService.heroes = heroes;
+                            _this.heroService.selectedHero = heroes[0];
+                        }, function (err) { return console.error('There was an error: ' + err); }, function () { return console.log('Completed!'); });
                     }
                 };
                 HeroList.prototype.add = function () {
@@ -72,7 +63,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './hero-
                 HeroList = __decorate([
                     core_1.Component({
                         selector: 'heros-app',
-                        template: "\n       <a href (click)=\"add()\" class=\"btn btn-info\">\n            <i class=\"fa fa-plus\"></i> Add\n       </a>\n       <div *ngIf=\"heroService.heroes\">\n          <table>\n            <tr *ngFor=\"#hero of heroService.heroes\">\n                <td>\n                  {{ hero.name }}\n                </td>\n                <td>\n                    <a href (click)=\"select(hero)\" class=\"btn btn-info\">\n                        <i class=\"fa fa-caret-square-o-down\"></i> Show\n                    </a>\n                    <a href [routerLink]=\"['/Edit', {id: hero.id}]\" class=\"btn btn-info\">\n                        <i class=\"fa fa-pencil-square-o\"></i> Edit\n                    </a>\n                    <a href (click)=\"remove(hero)\" class=\"btn btn-info\">\n                        <i class=\"fa fa-trash-o\"></i> Remove\n                    </a>\n                </td>\n          </tr>\n          </table>\n          <h2>Selected hero: {{heroService.selectedHero.name}}</h2>\n          <hero-show [hero]=\"heroService.selectedHero\"></hero-show>\n        </div>\n        ",
+                        template: "\n       <a href (click)=\"add()\" class=\"btn btn-info\">\n            <i class=\"fa fa-plus\"></i> Add\n       </a>\n       <div *ngIf=\"heroService.heroes\">\n          <table>\n            <tr *ngFor=\"#hero of heroService.heroes\">\n                <td>\n                  {{ hero.name }}\n                </td>\n                <td>\n                    <a href (click)=\"select(hero)\" class=\"btn btn-info\">\n                        <i class=\"fa fa-caret-square-o-down\"></i> Show\n                    </a>\n                    <a href [routerLink]=\"['/Edit', {id: hero._id}]\" class=\"btn btn-info\">\n                        <i class=\"fa fa-pencil-square-o\"></i> Edit\n                    </a>\n                    <a href (click)=\"remove(hero)\" class=\"btn btn-info\">\n                        <i class=\"fa fa-trash-o\"></i> Remove\n                    </a>\n                </td>\n          </tr>\n          </table>\n          <h2>Selected hero: {{heroService.selectedHero?.name}}</h2>\n          <hero-show [hero]=\"heroService.selectedHero\"></hero-show>\n        </div>\n        ",
                         directives: [common_1.CORE_DIRECTIVES, router_1.ROUTER_DIRECTIVES, hero_show_1.HeroViewer]
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
@@ -83,4 +74,3 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './hero-
         }
     }
 });
-//# sourceMappingURL=hero-list.js.map

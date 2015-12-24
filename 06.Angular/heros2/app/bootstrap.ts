@@ -1,6 +1,6 @@
 import {provide} from 'angular2/core';
 import { bootstrap } from 'angular2/platform/browser';
-//First we import all router-related directives and classes from ‘angular2/router’.
+
 import {
     ROUTER_PROVIDERS,
     LocationStrategy,

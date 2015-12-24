@@ -10,7 +10,9 @@
     "noImplicitAny": false
   },
   "files": [
-    "app/bootstrap.ts"
+    "app/bootstrap.ts",
+    "app/components/hero-app.ts",
+    "app/services/hero-service.ts"
   ],
   "exclude": [
     "node_modules"
