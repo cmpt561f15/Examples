@@ -43,6 +43,8 @@ export class HeroService {
                     this.heroes.splice(index, 1);
                     if (this.heroes.length > 0) {
                         this.selectedHero = this.heroes[0];
+                    } else {
+                        this.selectedHero = undefined;
                     }
                 });
     }

@@ -54,6 +54,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "ang
                         if (_this.heroes.length > 0) {
                             _this.selectedHero = _this.heroes[0];
                         }
+                        else {
+                            _this.selectedHero = undefined;
+                        }
                     });
                 };
                 HeroService.prototype.update = function (hero) {

@@ -1,20 +1,19 @@
-var express = require('express');
-var Hero = require('../models/heroModel');
+"use strict";
+let express = require('express');
+let Hero = require('../models/heroModel');
 
-
-var heroRouter = express.Router();
+let heroRouter = express.Router();
 
 heroRouter.route('/')
     .post(function (req, res) {
-        var hero = new Hero(req.body);
+        let hero = new Hero(req.body);
         hero.save();
         console.log("Hero Service - post request to /heros", hero);
         res.status(201).send(hero);
-
     })
     .get(function (req, res) {
 
-        var query = {};
+        let query = {};
 
         if (req.query.genre) {
             query.genre = req.query.genre;
@@ -51,7 +50,7 @@ heroRouter.route('/:heroId')
         if (req.body._id)
             delete req.body._id;
 
-        for (var p in req.body) {
+        for (let p in req.body) {
             req.hero[p] = req.body[p];
         }
         
