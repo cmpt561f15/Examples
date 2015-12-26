@@ -1,3 +1,4 @@
+//Look at this super-slim, happy and joyful router after kicking out all the logic to the controller 
 "use strict";
 let express = require('express');
 let heroController = require('../controllers/heroController');
