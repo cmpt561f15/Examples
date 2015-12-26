@@ -23,8 +23,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 let heroRouter = require('./server/routes/heroRoutes');
-
-
 app.use('/api/heros', heroRouter);
 
 app.listen(port, function(){
