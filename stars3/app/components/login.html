@@ -3,7 +3,7 @@
         <h3>STARS - Login</h3>
     </div>
     <div class="alert alert-danger " style="display:block" *ngIf="authenticateFailed" >
-        <span>Invalid username and/or password</span>
+           {{message}}
     </div>
     <!--ngControl is used to Track change-state and validity
     We initialize a template local variable (username) with the value "ngForm" (#username="ngForm").

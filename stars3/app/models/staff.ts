@@ -6,6 +6,8 @@ export class Staff {
     Password:string;
     Type:string;
     Program:(string[] | string);
+    Courses;
+    Programs;
     
 /*    constructor( StaffNo:number,
                  Username:string,

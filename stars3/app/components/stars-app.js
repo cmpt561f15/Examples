@@ -40,6 +40,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', "./login
                     this.router = router;
                 }
                 StarsApp.prototype.onLogout = function () {
+                    this.starsService.currentUser = undefined;
                     this.router.navigate(['/Login']);
                 };
                 StarsApp = __decorate([

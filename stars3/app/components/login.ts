@@ -12,6 +12,7 @@ import StarsService from "../services/stars-service";
 
 export class LoginComponent {
     authenticateFailed: boolean = false;
+    message : string;
 
     constructor (public starsService: StarsService, public router:Router ){}
 
@@ -20,56 +21,17 @@ export class LoginComponent {
         var adviserPrograms;
         this.starsService.login(username, password).subscribe(
             user => {
-
                 console.log("starsService.currentUser", this.starsService.currentUser);
+                this.starsService.getStudents();
 
-                let getStudentsObservable = (user.Type === "Faculty") ?
-                    this.starsService.getStudentsByInstructor(user.StaffNo) :
-                    this.starsService.getStudentsByProgram(user.Program);
+                this.starsService.getActionTypes();
 
-                getStudentsObservable.subscribe(
-                    results => {
-                        //In case of faculty the method will return both students and courses
-                        let students, instructorCourses;
-                        if (user.Type === "Faculty") {
-                            console.log("this.starsService.instructorCourses", this.starsService.instructorCourses);
-                        } else {
-                            console.log("this.starsService.adviserPrograms", this.starsService.adviserPrograms);
-                        }
-                        //console.log("Students", this.starsService.students);
-
-                        this.starsService.getPrograms().subscribe(
-                            programs => {
-                                if (typeof this.starsService.adviserPrograms !== "undefined") {
-                                    this.starsService.programs = programs;
-                                }
-                            }
-                        );
-
-                        this.starsService.getActionTypes().subscribe(
-                            actionTypes => {
-                                this.starsService.actionTypes = actionTypes;
-                            }
-                        );
-
-                        this.starsService.getStaff('Coordinator').subscribe(
-                            coordinators => {
-                                this.starsService.coordinators = coordinators;
-                            }
-                        );
-                        this.starsService.getStaff('Adviser').subscribe(
-                            advisers => {
-                                this.starsService.advisors = advisers;
-                            }
-                        );
-
-                        this.router.navigate(['/Students']);
-
-                    }
-                );
+                this.router.navigate(['/Students']);
             },
             error => {
-                console.log(error); this.authenticateFailed = true
+                console.log(error);
+                this.message = error;
+                this.authenticateFailed = true
             },
             () => {
                 console.log("Getting STARS data done!")

@@ -2,18 +2,18 @@
 
 <h1>Students at risk</h1>
 
-<div  *ngIf="starsService.programs && starsService.currentUser.Type === 'Adviser'">
+<div  *ngIf="starsService.currentUser.Type === 'Adviser' && starsService.currentUser.Programs">
     <label for="programsDD" class="control-label">Program</label>
     <select #selectedProgram id="programsDD" (change)="onParamChanged(selectedProgram.value, 'All')">
         <option selected="selected" value="All"> All </option>
-        <option *ngFor="#program of starsService.programs" value="{{program.Code}}">{{program.Name}}({{program.Code}})</option>
+        <option *ngFor="#program of starsService.currentUser.Programs" value="{{program.Code}}">{{program.Name}}({{program.Code}})</option>
     </select>
 </div>
-<div  *ngIf="starsService.instructorCourses && starsService.currentUser.Type === 'Faculty'">
+<div  *ngIf="starsService.currentUser.Type === 'Faculty' && starsService.currentUser.Courses">
     <label for="coursesDD" class="control-label">Course</label>
     <select #selectedCourse id="coursesDD" (change)="onParamChanged('All', selectedCourse.value)">
         <option selected="selected" value="All"> All </option>
-        <option *ngFor="#course of starsService.instructorCourses" value="{{course.CRN}}">{{course.CRN}} {{course.CourseName}}</option>
+        <option *ngFor="#course of starsService.currentUser.Courses" value="{{course.CRN}}">{{course.CRN}} {{course.CourseName}}</option>
     </select>
 </div>
 

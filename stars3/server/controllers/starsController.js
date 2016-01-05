@@ -10,60 +10,68 @@ class StarsController {
         this.Action = require('../models/actionModel');
     }
 
-    login(req, res){
-        console.log("login. Username", req.params.username);
-        console.log("password", req.params.password);
-        this.Staff.findOne({ Username: req.params.username, Password: req.params.password},
-            (err, staff) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).send(err);
+    login(req, res) {
+        console.log("login using: ", req.params.username, req.params.password);
+
+        let promise = this.Staff.findOne({Username: req.params.username, Password: req.params.password}).exec();
+        let userToReturn;
+        promise.then(user => {
+                if (!user) { // if null just return it
+                    return user;
                 }
-                else{
-                    console.log(staff);
-                    res.json(staff);
+                userToReturn = user.toObject();
+                //If adviser get details of their programs
+                if (user.Type === 'Adviser') {
+                    return this.Program.find({Code: {$in: user.Program}}).exec();
                 }
+                //If faculty get their courses
+                else if (user.Type === 'Faculty') {
+                    return this.Course.find({InstructorId: user.StaffNo}).exec();
+                }
+                else {
+                    return userToReturn;
+                }
+            })
+            .then(results => {
+                if (!userToReturn) {
+                    res.status(403).send("Login failed. Invalid username and/or password");
+                }
+                else {
+                    //Attach the results to the user object to return
+                    if (userToReturn.Type === 'Adviser') {
+                        userToReturn.Programs = results;
+                    } else if (userToReturn.Type === 'Faculty') {
+                        userToReturn.Courses = results;
+                    }
+                    res.send(userToReturn);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err)
             });
     }
 
-    getStaff(req, res){
-        this.Staff.find({ Type: req.params.type}, function (err, staff) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                res.json(staff);
-            }
-        });
-    }
-
-    getCourses(req, res){
-        this.Course.find({InstructorId: req.params.insId}, function (err, courses) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                res.json(courses);
-            }
-        });
-    }
-
     getStudents(req, res){
-        this.Student.find({}, function (err, students) {
+        let query = this.Student.find();
+        console.log("getStudents.req.query.programs: ", req.query.programs);
+        if(req.query.programs) {
+            query.where({Program: {$in: req.query.programs.split(",")}});
+        }
+
+        //To access query string (values after ? in the url) you can use req.query
+        console.log("getStudents.req.query.courses: ", req.query.courses);
+        if(req.query.courses) {
+            query.where({Courses: {$in: req.query.courses.split(",")}});
+        }
+
+        query.exec(function (err, students) {
             if (err)
                 res.status(500).send(err);
             else{
                 res.json(students);
             }
         });
-    }
-
-    getStudentsByProgram(req, res){
-        this.Student.find( { Program: { $in: req.params.programs.split(",") } } , function (err, students) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                res.json(students);
-            }
-        }).sort('StudentId');
     }
 
     getAdviserPrograms(req, res){
@@ -87,70 +95,29 @@ class StarsController {
         });
     }
 
-    getAdvisers(req, res, next){
-        this.Staff.find({ Type: 'Adviser'}, function (err, staff) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                req.advisers = staff.map(s => s.Username);
-                next();
-            }
-        });
-    }
-
-    getCoordinators(req, res, next){
-        this.Staff.find({ Type: 'Coordinator'}, function (err, staff) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                req.coordinators = staff.map(s => s.Username);
-                next();
-            }
-        });
-    }
-
-    getFaculty(req, res, next){
-        this.Staff.find({ Type: 'Faculty'}, function (err, staff) {
-            if (err)
-                res.status(500).send(err);
-            else{
-                req.faculty = staff.map(s => s.Username);
-                next();
-            }
-        });
-    }
-
-    getActions(req, res){
-        console.log(req.params.studentId);
+    getActions(req, res) {
+        console.log("getActions for StudentId " + req.params.studentId);
         let query = this.Action.find().where('Students').in([req.params.studentId]);
 
-        switch (req.params.actionBy){
-            case 'Me':
-                query.where({ ByWhom: req.params.username});
-                break;
-            case 'Adviser':
-                query.where('ByWhom').in(req.advisors);
-                //actions = actions.filter(a => advisors.indexOf(a.ByWhom) >= 0);
-                break;
-            case 'Coordinator':
-                query.where('ByWhom').in(req.coordinators);
-                //actions = actions.filter(a => coordinators.indexOf(a.ByWhom) >= 0);
-                break;
-            case 'Faculty':
-                query.where('ByWhom').in(req.faculty);
-                //actions = actions.filter(a => coordinators.indexOf(a.ByWhom) < 0
-                    //&& advisors.indexOf(a.ByWhom) < 0);
-                break;
-        }
+        if (req.params.actionBy === 'all' || req.params.actionBy === 'Me') {
+            let promise = req.params.actionBy === 'all' ? query.exec() :
+                query.where({ByWhom: req.params.username}).exec();
 
-        query.exec(function(err, results) {
-            if (err) {
-                res.status(500).send(err);
-             } else {
-                res.send(results);
-                //console.log(results);
-            }
-        });
+            promise.then(results => res.send(results))
+                .catch(err => res.status(500).send(err));
+        }
+        else {
+            //Get advisers, faculty or coordinators depending on the actionBy parameter
+            let promise = this.Staff.find({Type: req.params.actionBy}).exec();
+
+            promise.then(staff => {
+                    let usernames = staff.map(s => s.Username);
+                    console.log(`Staff of type - ${req.params.actionBy} : `, usernames);
+                    return query.where('ByWhom').in(usernames).exec();
+                })
+                .then(results => res.send(results))
+                .catch(err => res.status(500).send(err));
+        }
     }
 
     getAction (req, res, next) {
@@ -181,7 +148,7 @@ class StarsController {
                 res.status(500).send(err);
             }
             else {
-                res.status(204).send('Action Removed');
+                res.status(204).send(`Action ${req.action._id} removed`);
             }
         });
     }
@@ -199,7 +166,7 @@ class StarsController {
                 res.status(500).send(err);
             }
             else {
-                res.json(req.action);
+                res.status(200).send(`Action ${req.action._id} updated`);
             }
         });
     }

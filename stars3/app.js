@@ -4,6 +4,12 @@ let express = require('express'),
     bodyParser = require('body-parser'),
     open = require('open');
 
+/* Very important
+This makes Mongoose async operations, like .save() and queries,
+return ES6 Promises. This means that you can do things like MyModel.findOne({}).then()
+ */
+mongoose.Promise = global.Promise;
+
 let dbConnection = mongoose.connect('mongodb://localhost/stars', function(err) {
     if(!err) {
         let starsRepository = require('./server/models/starsRepository');

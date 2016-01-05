@@ -1,5 +1,6 @@
 export class Action {
-    constructor(public _id: string,
+    constructor(
+            public _id: string,
             public Date: string,
             public ActionType: string,
             public Title: string,

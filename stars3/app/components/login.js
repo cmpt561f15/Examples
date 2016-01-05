@@ -37,37 +37,12 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', "../serv
                     var adviserPrograms;
                     this.starsService.login(username, password).subscribe(function (user) {
                         console.log("starsService.currentUser", _this.starsService.currentUser);
-                        var getStudentsObservable = (user.Type === "Faculty") ?
-                            _this.starsService.getStudentsByInstructor(user.StaffNo) :
-                            _this.starsService.getStudentsByProgram(user.Program);
-                        getStudentsObservable.subscribe(function (results) {
-                            //In case of faculty the method will return both students and courses
-                            var students, instructorCourses;
-                            if (user.Type === "Faculty") {
-                                console.log("this.starsService.instructorCourses", _this.starsService.instructorCourses);
-                            }
-                            else {
-                                console.log("this.starsService.adviserPrograms", _this.starsService.adviserPrograms);
-                            }
-                            //console.log("Students", this.starsService.students);
-                            _this.starsService.getPrograms().subscribe(function (programs) {
-                                if (typeof _this.starsService.adviserPrograms !== "undefined") {
-                                    _this.starsService.programs = programs;
-                                }
-                            });
-                            _this.starsService.getActionTypes().subscribe(function (actionTypes) {
-                                _this.starsService.actionTypes = actionTypes;
-                            });
-                            _this.starsService.getStaff('Coordinator').subscribe(function (coordinators) {
-                                _this.starsService.coordinators = coordinators;
-                            });
-                            _this.starsService.getStaff('Adviser').subscribe(function (advisers) {
-                                _this.starsService.advisors = advisers;
-                            });
-                            _this.router.navigate(['/Students']);
-                        });
+                        _this.starsService.getStudents();
+                        _this.starsService.getActionTypes();
+                        _this.router.navigate(['/Students']);
                     }, function (error) {
                         console.log(error);
+                        _this.message = error;
                         _this.authenticateFailed = true;
                     }, function () {
                         console.log("Getting STARS data done!");

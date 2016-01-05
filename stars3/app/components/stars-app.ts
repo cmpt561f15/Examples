@@ -31,6 +31,7 @@ export class StarsApp {
     }
 
     onLogout() {
+        this.starsService.currentUser = undefined;
         this.router.navigate(['/Login']);
     }
 }
