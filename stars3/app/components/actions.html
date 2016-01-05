@@ -1,0 +1,73 @@
+<action-viewer #actionViewer></action-viewer>
+<action-editor #actionEditor></action-editor>
+
+<div class="row wider">
+    <div class="form-group form-group-condensed col-xs-12 col-sm-3">
+        <br />
+        <label for="actionby">By</label>
+        <select [(ngModel)]="selectedActionBy" #actionby id="actionby" (change)="onParamChanged(student.value, actionby.value)">
+            <option value="all">All</option>
+            <option value="Me">Me</option>
+            <option value="Adviser">Adviser</option>
+            <option value="Coordinator">Coordinator</option>
+            <option value="Faculty">Faculty</option>
+        </select>
+    </div>
+
+    <div class="form-group form-group-condensed col-xs-16 col-sm-4" >
+        <label for="students">Students</label>
+        <br><button (click)="onChangeStudent('previous')" id="prev" type="button" class="navButton btn btn-info">Prev</button>
+        <select #student [(ngModel)]="selectedStudentId" id="students" (change)="onParamChanged(student.value, actionby.value)" >
+            <option *ngFor="#student of starsService.students"
+                    value="{{student.StudentId}}">{{student.StudentId}} - {{student.FirstName}} {{student.LastName}}</option>
+        </select>
+        <button (click)="onChangeStudent('next')" id="next" type="button" class="navButton btn btn-info">Next</button>
+    </div>
+</div>
+<div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#actionEditor"
+            (click)="actionEditor.add([student.value])">
+        <i class="fa fa-plus"></i> Add Action
+    </button>
+</div>
+<br>
+
+<h3>Actions</h3>
+<div class="table-responsive">
+    <table id="actionsTable" class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>By</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="#action of starsService.actions">
+                <td>{{action._id}}</td>
+                <td >{{action.CourseCRN}}</td>
+                <td>{{action.Date}}</td>
+                <td>{{action.ByWhom}}</td>
+                <td>{{action.ActionType}}</td>
+                <td>{{action.Title}}</td>
+                <td>
+                    <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#actionViewer"
+                            (click)="actionViewer.show(action)">
+                        Details
+                    </button>
+                    <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#actionEditor"
+                            (click)="actionEditor.edit(action)">
+                        Edit
+                    </button>
+                    <button class="btn btn-xs btn-danger"  (click)="onDelete(action._id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

@@ -1,0 +1,14 @@
+[
+  {
+    "Type":"Email"
+  },
+  {
+    "Type":"Letter"
+  },
+  {
+    "Type":"Meeting"
+  },
+  {
+    "Type":"Referral"
+  }
+]

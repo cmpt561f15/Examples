@@ -1,0 +1,41 @@
+<div class="col-md-3 col-md-offset-4">
+    <div class="bs-callout bs-callout-info">
+        <h3>STARS - Login</h3>
+    </div>
+    <div class="alert alert-danger " style="display:block" *ngIf="authenticateFailed" >
+        <span>Invalid username and/or password</span>
+    </div>
+    <!--ngControl is used to Track change-state and validity
+    We initialize a template local variable (username) with the value "ngForm" (#username="ngForm").
+    This will re-sets #username local template variable to the ngControl directive instance.
+    In other words, #username local template variable becomes a handle on the ngControl object for this input box.
+    -->
+    <form #loginForm="ngForm">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </span>
+            <input #username="ngForm" ngControl="username"
+                   type="text" class="form-control" placeholder="Username" required>
+            <div [hidden]="username.valid" class="alert alert-danger">
+                Username is required
+            </div>
+        </div>
+        <div><br/></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+            </span>
+            <input #password="ngForm" ngControl="password"
+                   type="password" class="form-control" placeholder="Password" required>
+            <div [hidden]="password.valid" class="alert alert-danger">
+                Password is required
+            </div>
+        </div>
+        <br>
+        <div>
+            <input (click)="onLogin(username.value, password.value)" [disabled]="!loginForm.form.valid"
+                   class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+        </div>
+    </form>
+</div>
