@@ -1,0 +1,30 @@
+[
+  {
+    "crn": 100,
+    "courseCode": "CS 100",
+    "courseName": "Programming 1",
+    "semester": "Fall 2015",
+    "instructorId": 10
+  },
+  {
+    "crn": 200,
+    "courseCode": "CS 200",
+    "courseName": "Programming 2",
+    "semester": "Fall 2015",
+    "instructorId": 10
+  },
+  {
+    "crn": 300,
+    "courseCode": "CS 300",
+    "courseName": "Web Programming 1",
+    "semester": "Fall 2015",
+    "instructorId": 20
+  },
+  {
+    "crn": 400,
+    "courseCode": "CS 400",
+    "courseName": "Web Programming 2",
+    "semester": "Fall 2015",
+    "instructorId": 20
+  }
+]

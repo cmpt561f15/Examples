@@ -1,0 +1,66 @@
+[
+  {
+    "assignmentId": 101,
+    "course": 100,
+    "title": "Progamming Assignment 1",
+    "description": "Progamming Assignment 1",
+    "rubricId": 1,
+    "type": "Individual"
+  },
+  {
+    "assignmentId": 102,
+    "course": 100,
+    "title": "Project Presentation",
+    "description": "Project Presentation",
+    "rubricId": 2,
+    "type": "Group",
+    "groups": [
+      {
+        "groupId": 1,
+        "students": [101, 102]
+      },
+      {
+        "groupId": 2,
+        "students": [103, 104]
+      },
+      {
+        "groupId": 3,
+        "students": [105, 106]
+      }
+    ]
+  },
+  {
+    "assignmentId": 201,
+    "course": 200,
+    "title": "Sys Progamming Assignment 1",
+    "description": "Sys Progamming Assignment 1",
+    "rubricId": 1,
+    "type": "Individual"
+  },
+  {
+    "assignmentId": 202,
+    "course": 200,
+    "title": "Group Presentation",
+    "description": "Group Presentation",
+    "rubricId": 2,
+    "type": "Group",
+    "groups": [
+      {
+        "groupId": 1,
+        "students": [101, 102]
+      },
+      {
+        "groupId": 2,
+        "students": [103, 104]
+      },
+      {
+        "groupId": 3,
+        "students": [105, 106]
+      }
+    ]
+  }
+]
+
+
+  
+    

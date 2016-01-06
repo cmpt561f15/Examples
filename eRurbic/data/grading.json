@@ -1,0 +1,75 @@
+[
+  {
+    "assignmentId": 101,
+    "students": [101],
+    "criteria": [
+      {
+        "description": "Correctness",
+        "weight": 40,
+        "grade": {
+          "level": "Excellent",
+          "descriptor": "The program works and meets all of the specifications.",
+          "score": 1
+        }
+      },
+      {
+        "description": "Reusability",
+        "weight": 30,
+        "grade": {
+          "level": "Good",
+          "descriptor": "Most of the code could be reused in other programs.",
+          "score": 0.8
+        }
+      },
+      {
+        "description": "Efficiency",
+        "weight": 30,
+        "grade": {
+          "level": "Acceptable",
+          "descriptor": "The code is brute force and unnecessarily long.",
+          "score": 0.65
+        }
+      }
+    ],
+    "Comment": "Excellent work but the implementation is not efficient. See model solution."
+  },
+  {
+    "assignmentId": 102,
+    "GroupId": 1,
+    "Students": [
+      101,
+      102
+    ],
+    "criteria": [
+      {
+        "description": "Confidence and enthusiasm",
+        "weight": 40,
+        "grade": {
+          "level": "Excellent",
+          "descriptor": "Presents the content in an engaging way with high level of confidence and enthusiasm.",
+          "score": 0.9
+        }
+      },
+      {
+        "description": "Clarity",
+        "weight": 30,
+        "grade": {
+          "level": "Good",
+          "descriptor": "Speaks clearly and with satisfactory pace and volume most of the time.",
+          "score": 0.8
+        }
+      },
+      {
+        "description": "Answering Questions",
+        "weight": 30,
+        "grade": {
+          "level": "Unsatisfactory",
+          "descriptor": "Answers questions poorly by re-reading written content.",
+          "score": 0.4
+        }
+      }
+    ],
+    "Comment": "Good content but poor presentation. Lack of clarity."
+  }
+]
+

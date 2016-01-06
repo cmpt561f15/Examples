@@ -1,0 +1,98 @@
+[
+  {
+    "studentId": 101,
+    "firstname": "Fn1",
+    "lastname": "Ln1",
+    "password": "password",
+    "gender": "M",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 102,
+    "firstname": "Fn2",
+    "lastname": "Ln2",
+    "password": "password",
+    "gender": "M",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 103,
+    "firstname": "Fn3",
+    "lastname": "Ln3",
+    "password": "password",
+    "gender": "F",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 104,
+    "firstname": "Fn4",
+    "lastname": "Ln4",
+    "password": "password",
+    "gender": "M",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 105,
+    "firstname": "Fn5",
+    "lastname": "Ln5",
+    "password": "password",
+    "gender": "F",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 106,
+    "firstname": "Fn6",
+    "lastname": "Ln6",
+    "password": "password",
+    "gender": "M",
+    "courses": [100,200]
+  },
+  {
+    "studentId": 107,
+    "firstname": "Fn7",
+    "lastname": "Ln7",
+    "password": "password",
+    "gender": "F",
+    "courses": [300,400]
+  },
+  {
+    "studentId": 108,
+    "firstname": "Fn8",
+    "lastname": "Ln8",
+    "password": "password",
+    "gender": "M",
+    "courses": [300,400]
+  },
+  {
+    "studentId": 109,
+    "firstname": "Fn9",
+    "lastname": "Ln9",
+    "password": "password",
+    "gender": "F",
+    "courses": [300,400]
+  },
+  {
+    "studentId": 110,
+    "firstname": "Fn10",
+    "lastname": "Ln10",
+    "password": "password",
+    "gender": "F",
+    "courses": [300,400]
+  },
+  {
+    "studentId": 111,
+    "firstname": "Fn11",
+    "lastname": "Ln11",
+    "password": "password",
+    "gender": "M",
+    "courses": [300,400]
+  },
+  {
+    "studentId": 112,
+    "firstname": "Fn12",
+    "lastname": "Ln12",
+    "password": "password",
+    "gender": "F",
+    "courses": [300,400]
+  }
+]

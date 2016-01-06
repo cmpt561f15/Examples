@@ -1,0 +1,224 @@
+[
+  {
+    "rubricId": 1,
+    "title": "Progamming Rubric",
+    "description": "Progamming Rubric",
+    "category": "Progamming",
+    "keywords": "Progamming, Coding",
+    "criteria": [
+      {
+        "description": "Correctness",
+        "weight": 40,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "The program works and meets all of the specifications.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "The program works and produces the correct results and displays them correctly. It also meets most of the other specifications.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "The program produces correct results but does not display them correctly.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "The program produces correct results but does not display them correctly.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      },
+      {
+        "description": "Reusability",
+        "weight": 30,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "The code could be reused as a whole or each routine could be reused.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "Most of the code could be reused in other programs.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "Some parts of the code could be reused in other programs.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "The code is not organized for reusability.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      },
+      {
+        "description": "Efficiency",
+        "weight": 30,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "The code is extremely efficient without sacrificing readability and understanding.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "The code is fairly efficient without sacrificing readability and understanding.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "The code is brute force and unnecessarily long.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "The code is huge and appears to be patched together.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rubricId": 2,
+    "title": "Presentation Rubric",
+    "description": "Presentation Rubric",
+    "category": "Presentation",
+    "keywords": "Presentation, Slides",
+    "criteria": [
+      {
+        "description": "Confidence and enthusiasm",
+        "weight": 40,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "Presents the content in an engaging way with high level of confidence and enthusiasm.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "Presents the content in an engaging way but occasionally reads written content.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "Student mostly reads written content.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "Student reads written content.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      },
+      {
+        "description": "Clarity",
+        "weight": 30,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "Speaks clearly and with good pace and volume.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "Speaks clearly and with satisfactory pace and volume most of the time.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "Sometimes lacks clarity and is hard to hear.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "Lacks clarity and is hard to hear and understand.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      },
+      {
+        "description": "Answering Questions",
+        "weight": 30,
+        "levels": [
+          {
+            "level": "Excellent",
+            "descriptor": "Student correctly answers difficult questions with confidence and with explanations and elaboration.",
+            "coefficientLower": 0.9,
+            "coefficientUpper": 1,
+            "coefficientDefault": 1
+          },
+          {
+            "level": "Good",
+            "descriptor": "Student is able to answer questions but fails to elaborate.",
+            "coefficientLower": 0.8,
+            "coefficientUpper": 0.89,
+            "coefficientDefault": 0.85
+          },
+          {
+            "level": "Acceptable",
+            "descriptor": "Student is able to answer simple questions.",
+            "coefficientLower": 0.6,
+            "coefficientUpper": 0.79,
+            "coefficientDefault": 0.7
+          },
+          {
+            "level": "Unsatisfactory",
+            "descriptor": "Answers questions poorly by re-reading written content.",
+            "coefficientLower": 0,
+            "coefficientUpper": 0.59,
+            "coefficientDefault": 0.3
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "facultyNo": 10,
+    "username": "faculty1",
+    "password": "password",
+    "firstname": "Faculty1",
+    "lastname": "Ln1"
+  },
+  {
+    "facultyNo": 20,
+    "username": "faculty2",
+    "password": "password",
+    "firstname": "Faculty2",
+    "lastname": "Ln2"
+  }
+]
