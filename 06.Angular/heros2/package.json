@@ -26,7 +26,7 @@
     "express": "^4.11.2",
     "gulp": "^3.8.11",
     "gulp-nodemon": "^1.0.5",
-    "mongoose": "^4.3.4"
+    "mongoose": "^5.7.6"
   },
   "devDependencies": {
     "concurrently": "^1.0.0",
